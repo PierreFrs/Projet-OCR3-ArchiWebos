@@ -172,9 +172,15 @@ nav ul {
 nav li {
   padding: 0 10px;
   font-size: 1.2em;
+  cursor: pointer;
+}
+nav li a {
+  color: black;
+  text-decoration: none;
 }
 
-li:hover {
+li:hover,
+a:hover {
   color: #b1663c;
 }
 #introduction {
@@ -298,4 +304,68 @@ footer nav ul {
   display: flex;
   justify-content: flex-end;
   margin: 2em;
+}
+
+/* login page */
+
+#login-body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#login-body header {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+}
+
+#login {
+  width: 100%;
+}
+
+#login h2 {
+  margin-bottom: 20px;
+}
+#login form {
+  text-align: left;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+#login form {
+  text-align: left;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+#login input {
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#email,
+#password {
+  width: 380px;
+}
+
+#login-btn {
+  width: 180px;
+}
+
+#login label {
+  margin: 2em 0 1em 0;
+}
+
+#forgot {
+  text-align: center;
+  color: #3d3d3d;
+  font-weight: 600;
 }
