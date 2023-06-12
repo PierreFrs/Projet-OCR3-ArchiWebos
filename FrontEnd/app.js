@@ -1,6 +1,15 @@
 const gallery = document.querySelector(".gallery");
 const url = "http://localhost:5678/api/works";
 
+// Fonction de vérification du localStorage
+const verifyLocalStorage = () => {
+  let login = window.localStorage.getItem("login");
+  if (login === "success") {
+    adminMode();
+  }
+};
+verifyLocalStorage();
+
 // Fonction récupérant les travaux via l'API
 const fetchWorks = async () => {
   const response = await fetch(url);
@@ -72,11 +81,6 @@ filtersDOM.addEventListener("click", async (e) => {
     displayGallery(filteredProjects);
   }
 });
-
-// Page de connexion : integration
-
-// Page de connexion : redirection vers la page d'accueil lorsque confirmé
-// Message d'erreur si infos pas correctes
 
 // modale fonctionnelle pour ajouter des medias et modifier
 
