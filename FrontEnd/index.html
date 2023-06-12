@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
+    <div class="admin-header">
+      <i class="fa-regular fa-pen-to-square" style="color: #ffffff"></i>
+      <p>Mode édition</p>
+      <button class="publish-btn">publier les changements</button>
+    </div>
     <header>
       <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
       <nav>
@@ -28,7 +33,11 @@
     <main>
       <section id="introduction">
         <figure>
-          <img src="./assets/images/sophie-bluel.png" alt="" />
+          <img
+            src="./assets/images/sophie-bluel.png"
+            alt=""
+            class="admin-photo"
+          />
         </figure>
         <article>
           <h2>Designer d'espace</h2>
@@ -50,7 +59,7 @@
         </article>
       </section>
       <section id="portfolio">
-        <h2>Mes Projets</h2>
+        <h2 class="projects-title">Mes Projets</h2>
         <div class="filters-container">
           <!-- Buttons displayed dynamically in app.js -->
         </div>
@@ -80,6 +89,10 @@
         </ul>
       </nav>
     </footer>
+    <script
+      src="https://kit.fontawesome.com/8ab3b6bdf1.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="app.js"></script>
   </body>
 </html>

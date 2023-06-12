@@ -1,9 +1,37 @@
 const gallery = document.querySelector(".gallery");
 const url = "http://localhost:5678/api/works";
 
+// Function to insert an element after the targeted one
+const insertAfter = (newNode, referenceNode) => {
+  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+};
+
+// Handles the administrator mode
+const adminMode = () => {
+  const adminHeader = document.querySelector(".admin-header");
+  adminHeader.style.display = "flex";
+  const filtersContainer = document.querySelector(".filters-container");
+  filtersContainer.classList.add("hidden");
+  gallery.classList.add("gallery-margin");
+  const photoModifier = document.createElement("div");
+  photoModifier.innerHTML = `<div class="modifier photo-modifier">
+            <i class="fa-regular fa-pen-to-square" style="color: #000"></i>
+            <p>modifier</p>
+          </div>`;
+  const adminPhoto = document.querySelector(".admin-photo");
+  insertAfter(photoModifier, adminPhoto);
+  const projectsModifier = document.createElement("div");
+  projectsModifier.innerHTML = `<div class="modifier projects-modifier">
+            <i class="fa-regular fa-pen-to-square" style="color: #000"></i>
+            <p>modifier</p>
+          </div>`;
+  const projectsTitle = document.querySelector(".projects-title");
+  insertAfter(projectsModifier, projectsTitle);
+};
+
 // Fonction de vérification du localStorage
 const verifyLocalStorage = () => {
-  let login = window.localStorage.getItem("login");
+  const login = window.localStorage.getItem("login");
   if (login === "success") {
     adminMode();
   }

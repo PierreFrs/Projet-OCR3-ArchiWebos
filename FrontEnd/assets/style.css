@@ -164,6 +164,7 @@ h2 {
   font-size: 30px;
   color: #1d6154;
 }
+
 nav ul {
   display: flex;
   align-items: center;
@@ -206,6 +207,11 @@ a:hover {
 #introduction p {
   margin-bottom: 0.5em;
 }
+
+#portfolio {
+  position: relative;
+}
+
 #portfolio h2 {
   text-align: center;
   margin-top: 140px;
@@ -372,4 +378,73 @@ footer nav ul {
 
 .error-message {
   color: red;
+}
+
+/* admin mode */
+
+.hidden {
+  display: none;
+}
+
+.gallery-margin {
+  margin-top: 90px;
+}
+
+.admin-header {
+  width: 100%;
+  height: 60px;
+  color: white;
+  background-color: black;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-header i {
+  margin-right: 12px;
+}
+
+.admin-header p {
+  margin-right: 20px;
+}
+
+.admin-header .publish-btn {
+  font-weight: 700;
+  font-family: "Work Sans";
+  color: black;
+  background-color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.admin-header .publish-btn:hover {
+  opacity: 0.8;
+}
+
+.modifier {
+  display: flex;
+  gap: 11px;
+}
+
+.modifier p {
+  cursor: pointer;
+}
+
+.modifier p:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.photo-modifier {
+  margin: 15px auto 0;
+  width: 80%;
+}
+
+.projects-modifier {
+  position: relative;
+  left: 64%;
+  top: -18px;
 }
