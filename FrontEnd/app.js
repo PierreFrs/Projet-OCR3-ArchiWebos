@@ -1,3 +1,10 @@
+import fetchWorks from "./utils/fetchWorks.js";
+import verifyLocalStorage from "./utils/verifyLocalStorage.js";
+import displayButtons from "./utils/displayButtons.js";
+import displayGallery from "./utils/displayGallery.js";
+import displayGalleryOnLoad from "./utils/displayGalleryOnLoad.js";
+import { displayModale, closeModale } from "./utils/modale.js";
+
 const gallery = document.querySelector(".gallery");
 const modaleGallery = document.querySelector(".modale-gallery");
 const modaleOverlay = document.querySelector(".modale-overlay");
@@ -5,106 +12,21 @@ const modale = document.getElementById("modale");
 const closeModaleBtn = document.querySelector(".close-modale-btn");
 const deleteGalleryBtn = document.querySelector(".gallery-del");
 const deleteProjectBtn = document.querySelector(".trash-container");
-const url = "http://localhost:5678/api/works";
 
-// Function to insert an element after the targeted one
-const insertAfter = (newNode, referenceNode) => {
-  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-};
+export const filtersDOM = document.querySelector(".filters-container");
 
-// Handles the administrator mode
-const adminMode = () => {
-  const adminHeader = document.querySelector(".admin-header");
-  adminHeader.style.display = "flex";
-  const filtersContainer = document.querySelector(".filters-container");
-  filtersContainer.classList.add("hidden");
-  gallery.classList.add("gallery-margin");
-  const photoModifier = document.createElement("div");
-  photoModifier.innerHTML = `<div class="modifier photo-modifier">
-            <i class="fa-regular fa-pen-to-square" style="color: #000"></i>
-            <p>modifier</p>
-          </div>`;
-  const adminPhoto = document.querySelector(".admin-photo");
-  insertAfter(photoModifier, adminPhoto);
-  const projectsModifier = document.createElement("div");
-  projectsModifier.innerHTML = `<div class="modifier projects-modifier">
-            <i class="fa-regular fa-pen-to-square" style="color: #000"></i>
-            <p>modifier</p>
-          </div>`;
-  const projectsModifierBtn = document.querySelector(".projects-modifier");
-  const projectsTitle = document.querySelector(".projects-title");
-  insertAfter(projectsModifier, projectsTitle);
-};
-
-// Fonction de vérification du localStorage
-const verifyLocalStorage = () => {
-  const login = window.localStorage.getItem("login");
-  if (login === "success") {
-    adminMode();
-  }
-};
 verifyLocalStorage();
 
-// Fonction récupérant les travaux via l'API
-const fetchWorks = async () => {
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
-};
+displayButtons(filtersDOM);
 
-// Fonction créant les boutons de manière dynamique
-const filtersDOM = document.querySelector(".filters-container");
-
-const displayButtons = async () => {
-  const list = await fetchWorks();
-  const buttons = [
-    "Tous",
-    ...new Set(list.map((project) => project.categoryId)),
-  ];
-  filtersDOM.innerHTML = buttons
-    .map((button) => {
-      return `<button class='filter-btn' data-id="${button}">${
-        button === 1
-          ? "Objets"
-          : button === 2
-          ? "Appartements"
-          : button === 3
-          ? "Hotels & restaurants"
-          : "Tous"
-      }</button>`;
-    })
-    .join("");
-};
-
-displayButtons();
-
-// Fonction d'affichage dynamique des projets
-const displayGallery = (list) => {
-  const projectsList = list
-    .map((project) => {
-      const { id, title, imageUrl, categoryId } = project;
-
-      return `<figure id=${id} data-id=${categoryId}>
-            <img src=${imageUrl} alt=${title} />
-            <figcaption>${title}</figcaption>
-          </figure>`;
-    })
-    .join("");
-  gallery.innerHTML = projectsList;
-};
-
-// fonction permettant combinant les deux fonctions précédentes
-const onLoad = async () => {
-  const list = await fetchWorks();
-  displayGallery(list);
-};
-onLoad();
+displayGalleryOnLoad();
 
 // Event listeners des boutons filtres
 
 filtersDOM.addEventListener("click", async (e) => {
   const el = e.target;
   const list = await fetchWorks();
+  let filteredProjects;
   if (el.classList.contains("filter-btn")) {
     if (el.dataset.id === "Tous") {
       filteredProjects = list;
@@ -117,115 +39,9 @@ filtersDOM.addEventListener("click", async (e) => {
   }
 });
 
-// function to create and delete the modale
-let modaleContainer = null;
-
-const createModale = () => {
-  if (modaleContainer) {
-    return;
-  }
-  modaleContainer = document.createElement("div");
-  modaleContainer.classList.add("modale-container");
-  modaleContainer.innerHTML = `<h3 class="modale-title">Galerie photo</h3>
-          <div class="modale-gallery">
-            <div class="modale-gallery-item">
-              <div class="modale-img-container">
-                <img src="./assets/images/abajour-tahina.png" alt="" />
-                <div class="trash-container">
-                  <i
-                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
-                    style="color: #ffffff"
-                  ></i>
-                </div>
-              </div>
-              <button class="edit">éditer</button>
-            </div>
-            <div class="modale-gallery-item">
-              <div class="modale-img-container">
-                <img src="./assets/images/abajour-tahina.png" alt="" />
-                <div class="trash-container">
-                  <i
-                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
-                    style="color: #ffffff"
-                  ></i>
-                </div>
-              </div>
-              <button class="edit">éditer</button>
-            </div>
-            <div class="modale-gallery-item">
-              <div class="modale-img-container">
-                <img src="./assets/images/abajour-tahina.png" alt="" />
-                <div class="trash-container">
-                  <i
-                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
-                    style="color: #ffffff"
-                  ></i>
-                </div>
-              </div>
-              <button class="edit">éditer</button>
-            </div>
-            <div class="modale-gallery-item">
-              <div class="modale-img-container">
-                <img src="./assets/images/abajour-tahina.png" alt="" />
-                <div class="trash-container">
-                  <i
-                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
-                    style="color: #ffffff"
-                  ></i>
-                </div>
-              </div>
-              <button class="edit">éditer</button>
-            </div>
-            <div class="modale-gallery-item">
-              <div class="modale-img-container">
-                <img src="./assets/images/abajour-tahina.png" alt="" />
-                <div class="trash-container">
-                  <i
-                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
-                    style="color: #ffffff"
-                  ></i>
-                </div>
-              </div>
-              <button class="edit">éditer</button>
-            </div>
-          </div>
-          <hr />
-          <button class="add-photo">Ajouter une photo</button>
-          <button class="gallery-del">Supprimer la galerie</button>`;
-  modale.appendChild(modaleContainer);
-};
-
-const displayModaleWindow = () => {
-  createModale();
-  modale.classList.remove("hidden");
-};
-
-const displayOverlay = () => {
-  modaleOverlay.classList.remove("hidden");
-};
-
-const displayModale = () => {
-  displayModaleWindow();
-  displayOverlay();
-};
-
-const hideOverlay = () => {
-  modaleOverlay.classList.add("hidden");
-};
-
-const hideModaleWindow = () => {
-  modale.classList.add("hidden");
-};
-
-const closeModale = () => {
-  hideOverlay();
-  hideModaleWindow();
-};
-
 // event listeners
-const projectsModifierBtn = document.querySelector(".projects-modifier");
 
-projectsModifierBtn.addEventListener("click", () => {
+projectsModifier.addEventListener("click", () => {
   displayModale();
 });
 

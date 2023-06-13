@@ -1,26 +1,19 @@
-emailInput = document.getElementById("email");
-passwordInput = document.getElementById("password");
-submitBtn = document.getElementById("submit-btn");
+import insertAfter from "./insertAfter.js";
+import verifyLocalStorage from "./verifyLocalStorage.js";
 
-const verifyLocalStorage = () => {
-  let login = window.localStorage.getItem("login");
-  if (login === "success") {
-    window.location.replace("./index.html");
-  }
-};
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const submitBtn = document.getElementById("submit-btn");
+
 verifyLocalStorage();
 
 // fonctions de verification des infos
 
-const insertAfter = (newNode, referenceNode) => {
-  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-};
-
 const verifyEmail = () => {
   let validate = true;
-  userEmail = emailInput.value;
+  const userEmail = emailInput.value;
 
-  emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   const errorMsgEmail = document.createElement("p");
   errorMsgEmail.classList.add("error-message");
   if (!emailRegEx.test(userEmail) && userEmail !== "") {
@@ -37,7 +30,7 @@ const verifyEmail = () => {
 
 const verifyPassword = () => {
   let validate = true;
-  userPassword = passwordInput.value;
+  const userPassword = passwordInput.value;
   const errorMsgPassword = document.createElement("p");
   errorMsgPassword.classList.add("error-message");
   if (userPassword === "") {
@@ -75,13 +68,12 @@ const sendInfos = () => {
   })
     .then((response) => response.json())
     .then((responseData) => {
-      console.log(responseData);
       // Handle the response from the server
       if (responseData.userId && responseData.token) {
         // Positive response
         console.log("Login successful");
         window.localStorage.setItem("login", "success");
-        window.location.replace("./index.html");
+        window.location.replace("../index.html");
       } else {
         // Negative response
         console.log("Login failed");

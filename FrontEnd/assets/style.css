@@ -365,9 +365,10 @@ footer nav ul {
   width: 380px;
 }
 
-#login-btn {
+#submit-btn {
   width: 180px;
   font-family: "Syne";
+  cursor: pointer;
 }
 
 #login label {
