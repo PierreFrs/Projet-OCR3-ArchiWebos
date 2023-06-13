@@ -234,6 +234,7 @@ a:hover {
   border-radius: 100px;
   background-color: transparent;
   cursor: pointer;
+  font-family: "Syne";
 }
 .filter-btn:nth-child(1) {
   padding: 0.75rem 1.5rem;
@@ -335,6 +336,7 @@ footer nav ul {
 
 #login h2 {
   margin-bottom: 20px;
+  font-family: "Syne";
 }
 #login form {
   text-align: left;
@@ -364,6 +366,7 @@ footer nav ul {
 
 #login-btn {
   width: 180px;
+  font-family: "Syne";
 }
 
 #login label {
@@ -395,7 +398,6 @@ footer nav ul {
   height: 60px;
   color: white;
   background-color: black;
-
   display: none;
   justify-content: center;
   align-items: center;
@@ -447,4 +449,130 @@ footer nav ul {
   position: relative;
   left: 64%;
   top: -18px;
+}
+
+/* modale style */
+
+.modale-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100%;
+  background-color: black;
+  opacity: 0.6;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+
+#modale {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  background-color: white;
+  padding: 32px;
+}
+
+.modale-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modale-title {
+  margin-bottom: 46px;
+  font-weight: 400;
+  font-size: 26px;
+}
+
+.fa-xmark {
+  position: relative;
+  top: 0;
+  right: -50%;
+  cursor: pointer;
+}
+
+.modale-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 73px;
+  width: 414px;
+}
+
+.modale-gallery-item {
+  position: relative;
+}
+
+.modale-img-container {
+  width: 78px;
+  height: 104px;
+  overflow: hidden;
+}
+
+.modale-img-container img {
+  width: 100%;
+}
+
+.trash-container {
+  width: 17px;
+  height: 17px;
+  background-color: #000;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.edit {
+  border: none;
+  background-color: #fff;
+  font-family: "Work Sans";
+  font-weight: 400;
+  font-size: 12px;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+#modale hr {
+  width: 74%;
+  color: #b3b3b3;
+  margin-top: 45px;
+}
+
+.add-photo {
+  background-color: #1d6154;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  font-family: "Syne";
+  margin-top: 38px;
+  cursor: pointer;
+}
+
+.add-photo:hover {
+  opacity: 0.8;
+}
+
+.gallery-suppr {
+  background-color: #fff;
+  color: #d65353;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-family: "Work Sans";
+  margin-top: 23px;
+  cursor: pointer;
 }
