@@ -1,77 +1,19 @@
 // function to create and delete the modale
-
+import modaleGalleryDisplay from "./modaleGalleryDisplay.js";
 const modaleOverlay = document.querySelector(".modale-overlay");
 
 let modaleContainer = null;
 
-const createModale = () => {
+const createModale = async () => {
   if (modaleContainer) {
     return;
   }
   modaleContainer = document.createElement("div");
   modaleContainer.classList.add("modale-container");
+  const galleryItems = await modaleGalleryDisplay();
   modaleContainer.innerHTML = `<h3 class="modale-title">Galerie photo</h3>
           <div class="modale-gallery">
-            <div class="modale-gallery-item">
-              <div class="modale-img-container">
-                <img src="./assets/images/abajour-tahina.png" alt="" />
-                <div class="trash-container">
-                  <i
-                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
-                    style="color: #ffffff"
-                  ></i>
-                </div>
-              </div>
-              <button class="edit">éditer</button>
-            </div>
-            <div class="modale-gallery-item">
-              <div class="modale-img-container">
-                <img src="./assets/images/abajour-tahina.png" alt="" />
-                <div class="trash-container">
-                  <i
-                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
-                    style="color: #ffffff"
-                  ></i>
-                </div>
-              </div>
-              <button class="edit">éditer</button>
-            </div>
-            <div class="modale-gallery-item">
-              <div class="modale-img-container">
-                <img src="./assets/images/abajour-tahina.png" alt="" />
-                <div class="trash-container">
-                  <i
-                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
-                    style="color: #ffffff"
-                  ></i>
-                </div>
-              </div>
-              <button class="edit">éditer</button>
-            </div>
-            <div class="modale-gallery-item">
-              <div class="modale-img-container">
-                <img src="./assets/images/abajour-tahina.png" alt="" />
-                <div class="trash-container">
-                  <i
-                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
-                    style="color: #ffffff"
-                  ></i>
-                </div>
-              </div>
-              <button class="edit">éditer</button>
-            </div>
-            <div class="modale-gallery-item">
-              <div class="modale-img-container">
-                <img src="./assets/images/abajour-tahina.png" alt="" />
-                <div class="trash-container">
-                  <i
-                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
-                    style="color: #ffffff"
-                  ></i>
-                </div>
-              </div>
-              <button class="edit">éditer</button>
-            </div>
+            ${galleryItems}
           </div>
           <hr />
           <button class="add-photo">Ajouter une photo</button>
