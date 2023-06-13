@@ -1,6 +1,8 @@
 const gallery = document.querySelector(".gallery");
 const modaleGallery = document.querySelector(".modale-gallery");
-
+const modaleOverlay = document.querySelector(".modale-overlay");
+const modale = document.getElementById("modale");
+const closeModaleBtn = document.querySelector(".close-modale-btn");
 const deleteGalleryBtn = document.querySelector(".gallery-del");
 const deleteProjectBtn = document.querySelector(".trash-container");
 const url = "http://localhost:5678/api/works";
@@ -115,24 +117,16 @@ filtersDOM.addEventListener("click", async (e) => {
   }
 });
 
-// modale fonctionnelle pour ajouter des medias et modifier
-// function to display modale
-
-// function to create the modale
-
-const createOverlay = () => {
-  const modaleOverlay = document.createElement("div");
-  modaleOverlay.classList.add("modale-overlay");
-  document.body.appendChild(modaleOverlay);
-};
+// function to create and delete the modale
+let modaleContainer = null;
 
 const createModale = () => {
-  const modale = document.createElement("aside");
-  modale.classList.add("modale");
-  modale.id = "modale";
-  modale.innerHTML = `<div class="modale-container">
-          <i class="fa-solid fa-xmark close-modale-btn"></i>
-          <h3 class="modale-title">Galerie photo</h3>
+  if (modaleContainer) {
+    return;
+  }
+  modaleContainer = document.createElement("div");
+  modaleContainer.classList.add("modale-container");
+  modaleContainer.innerHTML = `<h3 class="modale-title">Galerie photo</h3>
           <div class="modale-gallery">
             <div class="modale-gallery-item">
               <div class="modale-img-container">
@@ -197,40 +191,43 @@ const createModale = () => {
           </div>
           <hr />
           <button class="add-photo">Ajouter une photo</button>
-          <button class="gallery-del">Supprimer la galerie</button>
-        </div>`;
-
-  document.body.appendChild(modale);
+          <button class="gallery-del">Supprimer la galerie</button>`;
+  modale.appendChild(modaleContainer);
 };
 
-const deleteOverlay = () => {
-  modaleOverlay.remove();
-};
-
-const deleteModale = () => {
-  modale.remove();
-};
-
-// display and close functions
-const projectsModifierBtn = document.querySelector(".projects-modifier");
-const displayModale = () => {
-  createOverlay();
+const displayModaleWindow = () => {
   createModale();
+  modale.classList.remove("hidden");
+};
+
+const displayOverlay = () => {
+  modaleOverlay.classList.remove("hidden");
+};
+
+const displayModale = () => {
+  displayModaleWindow();
+  displayOverlay();
+};
+
+const hideOverlay = () => {
+  modaleOverlay.classList.add("hidden");
+};
+
+const hideModaleWindow = () => {
+  modale.classList.add("hidden");
 };
 
 const closeModale = () => {
-  deleteOverlay();
-  deleteModale();
+  hideOverlay();
+  hideModaleWindow();
 };
 
 // event listeners
+const projectsModifierBtn = document.querySelector(".projects-modifier");
 
 projectsModifierBtn.addEventListener("click", () => {
   displayModale();
 });
-
-const modaleOverlay = document.querySelector(".modale-overlay");
-const closeModaleBtn = document.querySelector(".close-modale-btn");
 
 closeModaleBtn.addEventListener("click", closeModale);
 modaleOverlay.addEventListener("click", closeModale);

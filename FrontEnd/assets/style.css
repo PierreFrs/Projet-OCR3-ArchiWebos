@@ -489,10 +489,17 @@ footer nav ul {
   font-size: 26px;
 }
 
-.fa-xmark {
+.arrow-left {
   position: relative;
   top: 0;
-  right: -50%;
+  left: 0;
+  cursor: pointer;
+}
+
+.close-modale-btn {
+  position: relative;
+  top: 0;
+  left: 95%;
   cursor: pointer;
 }
 
