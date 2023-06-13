@@ -1,4 +1,8 @@
 const gallery = document.querySelector(".gallery");
+const modaleGallery = document.querySelector(".modale-gallery");
+
+const deleteGalleryBtn = document.querySelector(".gallery-del");
+const deleteProjectBtn = document.querySelector(".trash-container");
 const url = "http://localhost:5678/api/works";
 
 // Function to insert an element after the targeted one
@@ -25,6 +29,7 @@ const adminMode = () => {
             <i class="fa-regular fa-pen-to-square" style="color: #000"></i>
             <p>modifier</p>
           </div>`;
+  const projectsModifierBtn = document.querySelector(".projects-modifier");
   const projectsTitle = document.querySelector(".projects-title");
   insertAfter(projectsModifier, projectsTitle);
 };
@@ -111,7 +116,124 @@ filtersDOM.addEventListener("click", async (e) => {
 });
 
 // modale fonctionnelle pour ajouter des medias et modifier
+// function to display modale
 
+// function to create the modale
+
+const createOverlay = () => {
+  const modaleOverlay = document.createElement("div");
+  modaleOverlay.classList.add("modale-overlay");
+  document.body.appendChild(modaleOverlay);
+};
+
+const createModale = () => {
+  const modale = document.createElement("aside");
+  modale.classList.add("modale");
+  modale.id = "modale";
+  modale.innerHTML = `<div class="modale-container">
+          <i class="fa-solid fa-xmark close-modale-btn"></i>
+          <h3 class="modale-title">Galerie photo</h3>
+          <div class="modale-gallery">
+            <div class="modale-gallery-item">
+              <div class="modale-img-container">
+                <img src="./assets/images/abajour-tahina.png" alt="" />
+                <div class="trash-container">
+                  <i
+                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
+                    style="color: #ffffff"
+                  ></i>
+                </div>
+              </div>
+              <button class="edit">éditer</button>
+            </div>
+            <div class="modale-gallery-item">
+              <div class="modale-img-container">
+                <img src="./assets/images/abajour-tahina.png" alt="" />
+                <div class="trash-container">
+                  <i
+                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
+                    style="color: #ffffff"
+                  ></i>
+                </div>
+              </div>
+              <button class="edit">éditer</button>
+            </div>
+            <div class="modale-gallery-item">
+              <div class="modale-img-container">
+                <img src="./assets/images/abajour-tahina.png" alt="" />
+                <div class="trash-container">
+                  <i
+                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
+                    style="color: #ffffff"
+                  ></i>
+                </div>
+              </div>
+              <button class="edit">éditer</button>
+            </div>
+            <div class="modale-gallery-item">
+              <div class="modale-img-container">
+                <img src="./assets/images/abajour-tahina.png" alt="" />
+                <div class="trash-container">
+                  <i
+                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
+                    style="color: #ffffff"
+                  ></i>
+                </div>
+              </div>
+              <button class="edit">éditer</button>
+            </div>
+            <div class="modale-gallery-item">
+              <div class="modale-img-container">
+                <img src="./assets/images/abajour-tahina.png" alt="" />
+                <div class="trash-container">
+                  <i
+                    class="fa-sharp fa-regular fa-trash-can fa-2xs"
+                    style="color: #ffffff"
+                  ></i>
+                </div>
+              </div>
+              <button class="edit">éditer</button>
+            </div>
+          </div>
+          <hr />
+          <button class="add-photo">Ajouter une photo</button>
+          <button class="gallery-del">Supprimer la galerie</button>
+        </div>`;
+
+  document.body.appendChild(modale);
+};
+
+const deleteOverlay = () => {
+  modaleOverlay.remove();
+};
+
+const deleteModale = () => {
+  modale.remove();
+};
+
+// display and close functions
+const projectsModifierBtn = document.querySelector(".projects-modifier");
+const displayModale = () => {
+  createOverlay();
+  createModale();
+};
+
+const closeModale = () => {
+  deleteOverlay();
+  deleteModale();
+};
+
+// event listeners
+
+projectsModifierBtn.addEventListener("click", () => {
+  displayModale();
+});
+
+const modaleOverlay = document.querySelector(".modale-overlay");
+const closeModaleBtn = document.querySelector(".close-modale-btn");
+
+closeModaleBtn.addEventListener("click", closeModale);
+modaleOverlay.addEventListener("click", closeModale);
 // fonction supprimer travaux
 
 // fonction post nouveau projet via formulaire
