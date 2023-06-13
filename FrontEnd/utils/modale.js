@@ -1,4 +1,7 @@
 // function to create and delete the modale
+
+const modaleOverlay = document.querySelector(".modale-overlay");
+
 let modaleContainer = null;
 
 const createModale = () => {

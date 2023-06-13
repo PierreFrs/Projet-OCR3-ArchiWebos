@@ -41,6 +41,8 @@ filtersDOM.addEventListener("click", async (e) => {
 
 // event listeners
 
+const projectsModifier = document.querySelector(".projects-modifier");
+
 projectsModifier.addEventListener("click", () => {
   displayModale();
 });
