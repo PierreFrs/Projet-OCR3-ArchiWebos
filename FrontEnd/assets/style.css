@@ -185,6 +185,25 @@ li:hover,
 a:hover {
   color: #b1663c;
 }
+
+.button {
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.7rem 1rem;
+  font-family: "Syne";
+  margin-top: 38px;
+}
+
+.green-button {
+  background-color: #1d6154;
+  cursor: pointer;
+}
+
+.grey-button {
+  background-color: #a7a7a7;
+}
+
 #introduction {
   display: flex;
   align-items: center;
@@ -449,7 +468,7 @@ footer nav ul {
   top: -18px;
 }
 
-/* modale style */
+/* modale accueil style */
 
 .modale-overlay {
   position: fixed;
@@ -474,10 +493,19 @@ footer nav ul {
   z-index: 20;
   background-color: white;
   padding: 32px;
+  border-radius: 10px;
 }
 
 .modale-container {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-modale-page,
+.modale-add-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -556,17 +584,6 @@ footer nav ul {
   margin-top: 45px;
 }
 
-.add-photo {
-  background-color: #1d6154;
-  color: white;
-  border: none;
-  border-radius: 50px;
-  padding: 0.5rem 1rem;
-  font-family: "Syne";
-  margin-top: 38px;
-  cursor: pointer;
-}
-
 .add-photo:hover {
   opacity: 0.8;
 }
@@ -579,6 +596,77 @@ footer nav ul {
   font-family: "Work Sans";
   margin-top: 23px;
   cursor: pointer;
+}
+
+/* modale ajouter style */
+
+.picture-placeholder {
+  width: 420px;
+  height: 169px;
+  background-color: #e8f1f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.image-icon-container {
+  width: 58px;
+}
+
+.add-photo-btn {
+  background-color: #cbd6dc;
+  color: #306685;
+  font-weight: 500;
+  border: none;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  font-family: "Work Sans";
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.photo-format {
+  color: #444444;
+  font-size: 10px;
+  font-weight: 400;
+  margin-top: 7px;
+}
+
+.add-photo-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+.add-photo-form label {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.add-photo-form input {
+  width: 420px;
+  border: none;
+  box-shadow: 4px 6px 25px -6px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+  padding: 23px 21px;
+}
+
+.add-photo-form select {
+  width: 100%;
+  background-color: white;
+  border: none;
+  box-shadow: 4px 6px 25px -6px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+  padding: 23px 21px;
+  font-family: "Work Sans";
+  cursor: pointer;
+}
+
+.modale-add-page .valider {
+  width: 237px;
 }
 
 /* toggled classes */

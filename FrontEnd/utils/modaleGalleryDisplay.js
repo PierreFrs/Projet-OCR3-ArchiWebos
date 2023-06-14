@@ -5,10 +5,9 @@ const modaleGalleryDisplay = async () => {
   const list = await fetchWorks();
   const projectsList = list
     .map((project) => {
-      console.log(project);
-      const { imageUrl } = project;
+      const { id, imageUrl } = project;
 
-      return `<div class="modale-gallery-item">
+      return `<div class="modale-gallery-item" id=${id}>
               <div class="modale-img-container">
                 <img src="${imageUrl}" alt="" />
                 <div class="trash-container">

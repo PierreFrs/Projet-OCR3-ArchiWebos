@@ -4,7 +4,6 @@ import adminMode from "./adminMode.js";
 const verifyLocalStorage = () => {
   const login = window.localStorage.getItem("login");
   const currentPage = window.location.pathname;
-  console.log(currentPage);
   if (login === "success" && currentPage === "/FrontEnd/index.html") {
     adminMode();
   } else if (
