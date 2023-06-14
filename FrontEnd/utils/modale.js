@@ -2,7 +2,8 @@ import modaleGalleryDisplay from "./modaleGalleryDisplay.js";
 
 const modaleOverlay = document.querySelector(".modale-overlay");
 const modale = document.getElementById("modale");
-const returnArrow = document.querySelector(".arrow-left");
+const returnArrow = document.querySelector(".left-arrow-container");
+
 let modaleContainer = null;
 
 // ouvre et ferme la modale
@@ -104,6 +105,7 @@ const toggleModalePage = () => {
   const addPage = document.querySelector(".modale-add-page");
   mainModalePage.classList.toggle("hidden");
   addPage.classList.toggle("hidden");
+  returnArrow.classList.toggle("hidden");
 };
 
 // page ajouter une photo
@@ -111,7 +113,5 @@ let goToAddBtn;
 goToAddBtn = modaleContainer.querySelector(".go-to-add-photo-btn");
 
 goToAddBtn.addEventListener("click", toggleModalePage);
-
 returnArrow.addEventListener("click", toggleModalePage);
-
 export { displayModale, closeModale };
