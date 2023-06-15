@@ -1,8 +1,5 @@
-// fonction permetant d'afficher dynamiquement la gallerie dans la modale
-import fetchWorks from "./fetchWorks.js";
-
-const modaleGalleryDisplay = async () => {
-  const list = await fetchWorks();
+// modaleGalleryDisplay
+const modaleGalleryDisplay = (list) => {
   const projectsList = list
     .map((project) => {
       const { id, imageUrl } = project;
@@ -21,6 +18,7 @@ const modaleGalleryDisplay = async () => {
             </div>`;
     })
     .join("");
+
   return projectsList;
 };
 
