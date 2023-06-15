@@ -114,4 +114,5 @@ goToAddBtn = modaleContainer.querySelector(".go-to-add-photo-btn");
 
 goToAddBtn.addEventListener("click", toggleModalePage);
 returnArrow.addEventListener("click", toggleModalePage);
+
 export { displayModale, closeModale };
