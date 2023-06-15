@@ -1,5 +1,5 @@
 // modaleGalleryDisplay
-const modaleGalleryDisplay = (list) => {
+const modaleGalleryDisplay = (list, modaleGallery) => {
   const projectsList = list
     .map((project) => {
       const { id, imageUrl } = project;
@@ -19,7 +19,7 @@ const modaleGalleryDisplay = (list) => {
     })
     .join("");
 
-  return projectsList;
+  modaleGallery.innerHTML = projectsList;
 };
 
 export default modaleGalleryDisplay;

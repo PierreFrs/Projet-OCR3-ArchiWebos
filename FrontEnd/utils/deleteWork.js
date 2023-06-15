@@ -63,5 +63,5 @@ const handleTrashcanClick = (e) => {
 const updateGalleries = async () => {
   const list = await fetchWorks();
   await displayGallery(list);
-  await modaleGalleryDisplay(list);
+  await modaleGalleryDisplay(list, modaleGallery);
 };

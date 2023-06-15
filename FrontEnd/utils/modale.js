@@ -3,8 +3,7 @@ import modaleGalleryDisplayOnLoad from "./modaleGalleryDisplayOnLoad.js";
 const modaleOverlay = document.querySelector(".modale-overlay");
 const modale = document.getElementById("modale");
 const returnArrow = document.querySelector(".left-arrow-container");
-
-let modaleContainer = null;
+const modaleContainer = document.querySelector(".modale-container");
 
 // ouvre et ferme la modale
 
@@ -34,17 +33,6 @@ const closeModale = () => {
   hideModaleWindow();
 };
 
-// Crée le conteneur de la page modale
-const createModaleContainer = () => {
-  if (modaleContainer) {
-    return;
-  }
-  modaleContainer = document.createElement("div");
-  modaleContainer.classList.add("modale-container");
-  modale.appendChild(modaleContainer);
-};
-createModaleContainer();
-
 // Crée le contenu du modaleContainer
 //  Main Modale Page
 const mainModalePageBuilder = () => {
@@ -57,16 +45,18 @@ const mainModalePageBuilder = () => {
           <button class="go-to-add-photo-btn button green-button">Ajouter une photo</button>
           <button class="gallery-del">Supprimer la galerie</button>`;
   modaleContainer.appendChild(mainModalePage);
+  const modaleGallery = document.querySelector(".modale-gallery");
+  modaleGalleryDisplayOnLoad(modaleGallery);
 };
 mainModalePageBuilder();
 
 // Crée la gallerie de la modale
-const createModaleGallery = async () => {
-  const modaleGallery = document.querySelector(".modale-gallery");
-  const galleryItems = await modaleGalleryDisplayOnLoad();
-  modaleGallery.innerHTML = galleryItems;
-};
-createModaleGallery();
+// const createModaleGallery = async () => {
+//   const modaleGallery = document.querySelector(".modale-gallery");
+//   const galleryItems = await modaleGalleryDisplayOnLoad();
+//   modaleGallery.innerHTML = galleryItems;
+// };
+// createModaleGallery();
 
 // Add Page
 const addPageBuilder = () => {
