@@ -2,12 +2,14 @@ import adminMode from "./adminMode.js";
 
 // Fonction de vérification du localStorage pour la page index
 const verifyLocalStorage = () => {
-  const login = window.localStorage.getItem("login");
+  const userId = window.localStorage.getItem("userId");
+  const authToken = window.localStorage.getItem("token");
   const currentPage = window.location.pathname;
-  if (login === "success" && currentPage === "/FrontEnd/index.html") {
+  if (userId && authToken && currentPage === "/FrontEnd/index.html") {
     adminMode();
   } else if (
-    login === "success" &&
+    userId &&
+    authToken &&
     currentPage === "/FrontEnd/pages/login.html"
   ) {
     window.location.replace("../index.html");

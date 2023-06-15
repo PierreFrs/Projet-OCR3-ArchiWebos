@@ -72,7 +72,8 @@ const sendInfos = () => {
       if (responseData.userId && responseData.token) {
         // Positive response
         console.log("Login successful");
-        window.localStorage.setItem("login", "success");
+        window.localStorage.setItem("userId", responseData.userId);
+        window.localStorage.setItem("token", responseData.token);
         window.location.replace("../index.html");
       } else {
         // Negative response
