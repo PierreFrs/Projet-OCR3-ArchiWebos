@@ -1,4 +1,4 @@
-import modaleGalleryDisplay from "./modaleGalleryDisplay.js";
+import modaleGalleryDisplayOnLoad from "./modaleGalleryDisplayOnLoad.js";
 
 const modaleOverlay = document.querySelector(".modale-overlay");
 const modale = document.getElementById("modale");
@@ -63,7 +63,7 @@ mainModalePageBuilder();
 // Crée la gallerie de la modale
 const createModaleGallery = async () => {
   const modaleGallery = document.querySelector(".modale-gallery");
-  const galleryItems = await modaleGalleryDisplay();
+  const galleryItems = await modaleGalleryDisplayOnLoad();
   modaleGallery.innerHTML = galleryItems;
 };
 createModaleGallery();

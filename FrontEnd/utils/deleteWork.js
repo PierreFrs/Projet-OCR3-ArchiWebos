@@ -1,5 +1,6 @@
 import displayGallery from "./displayGallery.js";
 import modaleGalleryDisplay from "./modaleGalleryDisplay.js";
+import fetchWorks from "./fetchWorks.js";
 
 // supprimer un travail
 
@@ -29,7 +30,7 @@ const deleteItem = async (itemId, authToken) => {
 
     if (response.ok) {
       console.log("Deletion successful");
-      //   updateGalleries();
+      updateGalleries();
       return true; // Deletion successful
     } else if (!authToken) {
       console.log("Please provide a valid authentification token");
@@ -59,7 +60,8 @@ const handleTrashcanClick = (e) => {
 };
 
 // // mettre à jour la gallery à la réceptionn de la réponse du serveur
-// const updateGalleries = async () => {
-// //   await displayGallery();
-// //   await modaleGalleryDisplay();
-// };
+const updateGalleries = async () => {
+  const list = await fetchWorks();
+  await displayGallery(list);
+  await modaleGalleryDisplay(list);
+};
