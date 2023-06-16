@@ -32,6 +32,7 @@ const updateGalleries = async () => {
 };
 
 // Créer la requete fetch DELETE
+
 const deleteItem = async (itemId, authToken) => {
   const url = `http://localhost:5678/api/works/${itemId}`;
 
@@ -46,17 +47,17 @@ const deleteItem = async (itemId, authToken) => {
     if (response.ok) {
       console.log("Deletion successful");
       updateGalleries();
-      return true; // Deletion successful
+      return true;
     } else if (!authToken) {
       console.log("Please provide a valid authentification token");
-      return false; // Deletion failed cause of invalid or missing token
+      return false;
     } else {
       console.log("Deletion failed");
-      return false; // Deletion failed
+      return false;
     }
   } catch (error) {
     console.error("Error deleting item", error);
-    return false; // Request or network error
+    return false;
   }
 };
 
