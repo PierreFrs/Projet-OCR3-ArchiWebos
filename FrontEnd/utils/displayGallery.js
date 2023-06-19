@@ -5,7 +5,7 @@ const displayGallery = (list) => {
   const projectsList = list
     .map((project) => {
       const { id, title, imageUrl, categoryId } = project;
-
+      console.log(project);
       return `<figure id=${id} data-id=${categoryId}>
             <img src=${imageUrl} alt=${title} />
             <figcaption>${title}</figcaption>

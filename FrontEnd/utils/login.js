@@ -1,5 +1,6 @@
 import insertAfter from "./insertAfter.js";
 import verifyLocalStorage from "./verifyLocalStorage.js";
+import resetErrors from "./resetErrors.js";
 
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
@@ -89,15 +90,6 @@ const sendInfos = () => {
       // Handle any errors
       console.error("Error:", error);
     });
-};
-
-// Fonction pour supprimer les messages d'erreur
-
-const resetErrors = () => {
-  const errorMessages = document.querySelectorAll(".error-message");
-  errorMessages.forEach((errorMsg) => {
-    errorMsg.remove();
-  });
 };
 
 // fonction pour rediriger si infos ok

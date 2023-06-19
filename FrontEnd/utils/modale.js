@@ -79,9 +79,9 @@ const addPageBuilder = () => {
           <label for="categorie">Catégorie</label>
           <select id="categorie" name="categorie">
             <option value="" selected> </option>
-            <option value="Objets">Objets</option>
-            <option value="Appartements">Appartements</option>
-            <option value="Hotels & restaurants">Hotels & restaurants</option>
+            <option value="1">Objets</option>
+            <option value="2">Appartements</option>
+            <option value="3">Hotels & restaurants</option>
           </select>
         </form>
         <hr />

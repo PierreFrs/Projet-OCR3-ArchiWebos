@@ -403,6 +403,10 @@ footer nav ul {
 .error-message {
   color: red;
 }
+.success-message {
+  color: green;
+  margin-top: 8px;
+}
 
 /* admin mode */
 

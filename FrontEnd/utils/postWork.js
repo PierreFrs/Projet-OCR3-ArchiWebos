@@ -1,4 +1,6 @@
 import insertAfter from "./insertAfter.js";
+import updateGalleries from "./updateGalleries.js";
+import resetErrors from "./resetErrors.js";
 
 const addPhotoBtn = document.querySelector(".add-photo-btn");
 const addPhotoInput = document.getElementById("addPhotoInput");
@@ -103,7 +105,7 @@ const verifyTitle = () => {
 
   const errorMsgTitle = document.createElement("p");
   errorMsgTitle.classList.add("error-message");
-  if (!projectTitle === "") {
+  if (!projectTitle) {
     validate = false;
     errorMsgTitle.textContent = "Ce champ ne peut être vide";
     insertAfter(errorMsgTitle, titleInput);
@@ -116,10 +118,10 @@ const verifyCategory = () => {
   const projectCategory = categoryInput.value;
   const errorMsgCategory = document.createElement("p");
   errorMsgCategory.classList.add("error-message");
-  if (projectCategory === "") {
+  if (!projectCategory) {
     validate = false;
     errorMsgCategory.textContent = "Ce champ ne peut être vide";
-    insertAfter(errorMsgCategory, titleInput);
+    insertAfter(errorMsgCategory, categoryInput);
   }
   return validate;
 };
@@ -133,48 +135,61 @@ const verifyInfos = () => {
 
 // post request
 
-const postItem = async () => {
+const postItem = async (e) => {
+  e.preventDefault();
+
+  resetErrors();
+
   const url = "http://localhost:5678/api/works";
   const authToken = localStorage.getItem("token");
 
   const title = titleInput.value;
   const category = parseInt(categoryInput.value);
-  const uploadedImageUrl = handlePhotoUpload();
+  const uploadedImage = addPhotoInput.files[0];
 
   const validate = verifyInfos();
   if (!validate) {
     return;
   }
 
-  const data = {
-    image: uploadedImageUrl,
-    title: title,
-    category: category,
-  };
+  const formData = new FormData();
+  formData.append("image", uploadedImage);
+  formData.append("title", title);
+  formData.append("category", category);
+
   try {
     const response = await fetch(url, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${authToken}`,
-        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: formData,
     });
+
     if (response.ok) {
       console.log("post successful");
+      successMessage();
       updateGalleries();
+      resetErrors();
       return true;
     } else if (!authToken) {
-      console.log("Please provide a valid authentification token");
+      console.log("Please provide a valid authentication token");
       return false;
     } else {
       console.log("post failed");
       return false;
     }
-  } catch {
-    console.error("Error deleting item", error);
+  } catch (error) {
+    console.error("Error posting item", error);
     return false;
   }
+};
+
+const successMessage = () => {
+  const successMsg = document.createElement("p");
+  successMsg.textContent = "Le projet a été ajouté avec succès";
+  successMsg.classList.add("success-message");
+  insertAfter(successMsg, validateBtn);
 };
 
 validateBtn.addEventListener("click", postItem);
