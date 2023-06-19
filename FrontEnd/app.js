@@ -4,6 +4,7 @@ import displayButtons from "./utils/displayButtons.js";
 import displayGallery from "./utils/displayGallery.js";
 import displayGalleryOnLoad from "./utils/displayGalleryOnLoad.js";
 import { displayModale, closeModale } from "./utils/modale.js";
+import logout from "./utils/logout.js";
 
 const modaleOverlay = document.querySelector(".modale-overlay");
 const closeModaleBtn = document.querySelector(".close-modale-btn");
@@ -39,12 +40,6 @@ filtersDOM.addEventListener("click", async (e) => {
 
 closeModaleBtn.addEventListener("click", closeModale);
 modaleOverlay.addEventListener("click", closeModale);
-
-const logout = () => {
-  console.log("click");
-  window.localStorage.clear();
-  window.location.reload();
-};
 
 // logout
 
