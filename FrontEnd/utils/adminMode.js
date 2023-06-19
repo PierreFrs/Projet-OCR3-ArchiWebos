@@ -10,14 +10,14 @@ const adminMode = () => {
   gallery.classList.add("gallery-margin");
   const photoModifier = document.createElement("div");
   photoModifier.innerHTML = `<div class="modifier photo-modifier">
-            <i class="fa-regular fa-pen-to-square" style="color: #000"></i>
+            <i class="fa-regular fa-pen-to-square fa-lg"></i>
             <p>modifier</p>
           </div>`;
   const adminPhoto = document.querySelector(".admin-photo");
   insertAfter(photoModifier, adminPhoto);
   const projectsModifier = document.createElement("div");
   projectsModifier.innerHTML = `<div class="modifier projects-modifier">
-            <i class="fa-regular fa-pen-to-square" style="color: #000"></i>
+            <i class="fa-regular fa-pen-to-square fa-lg"></i>
             <p>modifier</p>
           </div>`;
   const projectsTitle = document.querySelector(".projects-title");

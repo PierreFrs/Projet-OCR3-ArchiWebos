@@ -15,7 +15,7 @@
   </head>
   <body>
     <div class="admin-header">
-      <i class="fa-regular fa-pen-to-square" style="color: #ffffff"></i>
+      <i class="fa-regular fa-pen-to-square fa-lg"></i>
       <p>Mode édition</p>
       <button class="publish-btn">publier les changements</button>
     </div>
@@ -25,7 +25,9 @@
         <ul>
           <li><a href="#portfolio">projets</a></li>
           <li><a href="#contact">contact</a></li>
-          <li><a href="./pages/login.html" class="login">login</a></li>
+          <li class="login-li">
+            <a href="./pages/login.html" class="login">login</a>
+          </li>
           <li id="logout-btn" class="hidden">logout</li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
@@ -42,18 +44,18 @@
         </figure>
         <article>
           <h2>Designer d'espace</h2>
-          <p>
+          <p class="introduction-paragraph">
             Je raconte votre histoire, je valorise vos idées. Je vous accompagne
             de la conception à la livraison finale du chantier.
           </p>
-          <p>
+          <p class="introduction-paragraph">
             Chaque projet sera étudié en commun, de façon à mettre en valeur les
             volumes, les matières et les couleurs dans le respect de l’esprit
             des lieux et le choix adapté des matériaux. Le suivi du chantier
             sera assuré dans le souci du détail, le respect du planning et du
             budget.
           </p>
-          <p>
+          <p class="introduction-paragraph">
             En cas de besoin, une équipe pluridisciplinaire peut-être constituée
             : architecte DPLG, décorateur(trice)
           </p>
@@ -84,9 +86,9 @@
       <div class="modale-overlay hidden"></div>
       <aside id="modale" class="modale hidden">
         <div class="left-arrow-container hidden">
-          <i class="fa-solid fa-arrow-left arrow-left"></i>
+          <i class="fa-solid fa-arrow-left arrow-left fa-lg"></i>
         </div>
-        <i class="fa-solid fa-xmark close-modale-btn"></i>
+        <i class="fa-solid fa-xmark close-modale-btn fa-lg"></i>
         <div class="modale-container"></div>
       </aside>
     </main>

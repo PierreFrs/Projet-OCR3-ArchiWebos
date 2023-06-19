@@ -5,13 +5,8 @@ import displayGallery from "./utils/displayGallery.js";
 import displayGalleryOnLoad from "./utils/displayGalleryOnLoad.js";
 import { displayModale, closeModale } from "./utils/modale.js";
 
-const gallery = document.querySelector(".gallery");
-const modaleGallery = document.querySelector(".modale-gallery");
 const modaleOverlay = document.querySelector(".modale-overlay");
-const modale = document.getElementById("modale");
 const closeModaleBtn = document.querySelector(".close-modale-btn");
-const deleteGalleryBtn = document.querySelector(".gallery-del");
-const deleteProjectBtn = document.querySelector(".trash-container");
 const logoutBtn = document.getElementById("logout-btn");
 
 export const filtersDOM = document.querySelector(".filters-container");

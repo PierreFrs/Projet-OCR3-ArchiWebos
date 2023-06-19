@@ -105,9 +105,7 @@ nav,
 section {
   display: block;
 }
-body {
-  line-height: 1;
-}
+
 ol,
 ul {
   list-style: none;
@@ -127,19 +125,49 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+figcaption {
+  color: #3d3d3d;
+  margin-top: 7px;
+}
+
 /** end reset css**/
 
 body {
+  line-height: 1;
+  background-color: #fffef8;
   max-width: 1140px;
   margin: auto;
   font-family: "Work Sans";
   font-size: 14px;
+  position: relative;
+  padding-bottom: 60px;
 }
+
 header {
   display: flex;
   justify-content: space-between;
   margin: 50px 0;
 }
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  height: 60px;
+  background-color: white;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+footer nav ul {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2em;
+}
+
 section {
   margin: 50px 0;
 }
@@ -169,10 +197,11 @@ h2 {
 nav ul {
   display: flex;
   align-items: center;
+
   list-style-type: none;
 }
 nav li {
-  padding: 0 10px;
+  padding: 0 20px;
   font-size: 1.2em;
   cursor: pointer;
 }
@@ -184,6 +213,11 @@ nav li a {
 li:hover,
 a:hover {
   color: #b1663c;
+}
+
+li img {
+  width: 19.36px;
+  vertical-align: middle;
 }
 
 .button {
@@ -224,7 +258,7 @@ a:hover {
   margin-bottom: 1em;
 }
 
-#introduction p {
+.introduction-paragraph {
   margin-bottom: 0.5em;
 }
 
@@ -327,10 +361,8 @@ input[type="submit"] {
   border-radius: 60px;
 }
 
-footer nav ul {
-  display: flex;
-  justify-content: flex-end;
-  margin: 2em;
+.fa-pen {
+  color: #ffffff;
 }
 
 /* login page */
@@ -350,6 +382,10 @@ footer nav ul {
   top: 0px;
 }
 
+#login-body header ul a {
+  font-weight: bold;
+}
+
 #login {
   width: 100%;
 }
@@ -357,6 +393,7 @@ footer nav ul {
 #login h2 {
   margin-bottom: 20px;
   font-family: "Syne";
+  text-align: center;
 }
 #login form {
   text-align: left;
@@ -365,11 +402,10 @@ footer nav ul {
   flex-direction: column;
 }
 
-#login form {
-  text-align: left;
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
+#login label {
+  color: #3d3d3d;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 #login input {
@@ -416,7 +452,7 @@ footer nav ul {
 
 .admin-header {
   width: 100%;
-  height: 60px;
+  height: 59px;
   color: white;
   background-color: black;
   display: none;
@@ -433,11 +469,13 @@ footer nav ul {
 }
 
 .admin-header .publish-btn {
-  font-weight: 700;
+  height: 38px;
+  font-size: 14px;
+  font-weight: 600;
   font-family: "Work Sans";
   color: black;
   background-color: white;
-  padding: 0.5rem 1rem;
+  padding: 11px 23px;
   border: none;
   border-radius: 100px;
   cursor: pointer;
@@ -472,6 +510,14 @@ footer nav ul {
   top: -18px;
 }
 
+.photo-modifier i,
+.projects-modifier i {
+  color: #000;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
 /* modale accueil style */
 
 .modale-overlay {
@@ -483,13 +529,14 @@ footer nav ul {
   width: 100vw;
   height: 100%;
   background-color: black;
-  opacity: 0.6;
+  opacity: 0.4;
   z-index: 10;
   justify-content: center;
   justify-items: center;
 }
 
 #modale {
+  width: 630px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -524,15 +571,15 @@ footer nav ul {
 
 .arrow-left {
   position: relative;
-  top: 0;
-  left: 0;
+  top: -5px;
+  left: -5px;
   cursor: pointer;
 }
 
 .close-modale-btn {
   position: relative;
-  top: 0;
-  left: 95%;
+  top: -20px;
+  left: 97%;
   cursor: pointer;
 }
 
@@ -584,11 +631,15 @@ footer nav ul {
 
 #modale hr {
   width: 74%;
-  color: #b3b3b3;
-  margin-top: 45px;
+  color: #fafafa;
+  margin-top: 47px;
 }
 
-.add-photo:hover {
+.go-to-add-photo-btn {
+  width: 237px;
+}
+
+.go-to-add-photo-btn:hover {
   opacity: 0.8;
 }
 
@@ -613,6 +664,7 @@ footer nav ul {
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+  border-radius: 3px;
 }
 
 .image-icon-container {
@@ -648,10 +700,13 @@ footer nav ul {
 .add-photo-form label {
   width: 100%;
   margin-top: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3d3d3d;
 }
 
 .add-photo-form input {
-  width: 420px;
+  width: 380px;
   border: none;
   box-shadow: 4px 6px 25px -6px rgba(0, 0, 0, 0.2);
   margin-top: 10px;
@@ -659,7 +714,7 @@ footer nav ul {
 }
 
 .add-photo-form select {
-  width: 100%;
+  width: 420px;
   background-color: white;
   border: none;
   box-shadow: 4px 6px 25px -6px rgba(0, 0, 0, 0.2);
@@ -667,10 +722,19 @@ footer nav ul {
   padding: 23px 21px;
   font-family: "Work Sans";
   cursor: pointer;
+  appearance: none;
+}
+
+select {
+  background-image: url("./icons/caret-down-light.svg");
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 20px) center;
 }
 
 .modale-add-page .valider {
   width: 237px;
+  margin: 32px auto 23px;
 }
 
 /* add photo style */
@@ -685,6 +749,10 @@ footer nav ul {
 }
 .temp-image {
   height: 100%;
+}
+
+.add-photo-form option {
+  font-family: "Work Sans";
 }
 
 /* toggled classes */
