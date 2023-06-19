@@ -12,6 +12,7 @@ const modale = document.getElementById("modale");
 const closeModaleBtn = document.querySelector(".close-modale-btn");
 const deleteGalleryBtn = document.querySelector(".gallery-del");
 const deleteProjectBtn = document.querySelector(".trash-container");
+const logoutBtn = document.getElementById("logout-btn");
 
 export const filtersDOM = document.querySelector(".filters-container");
 
@@ -39,18 +40,25 @@ filtersDOM.addEventListener("click", async (e) => {
   }
 });
 
-// event listeners
+// event listeners pour la modale
+
+closeModaleBtn.addEventListener("click", closeModale);
+modaleOverlay.addEventListener("click", closeModale);
+
+const logout = () => {
+  console.log("click");
+  window.localStorage.clear();
+  window.location.reload();
+};
+
+// logout
+
+logoutBtn.addEventListener("click", logout);
 
 const projectsModifier = document.querySelector(".projects-modifier");
+
+// event listener pour ouvrir la modale
 
 projectsModifier.addEventListener("click", () => {
   displayModale();
 });
-
-closeModaleBtn.addEventListener("click", closeModale);
-modaleOverlay.addEventListener("click", closeModale);
-// fonction supprimer travaux
-
-// fonction post nouveau projet via formulaire
-
-// Afficher dynamiquement la nouvelle image de la modale

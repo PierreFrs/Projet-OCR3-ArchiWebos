@@ -7,6 +7,10 @@ const verifyLocalStorage = () => {
   const currentPage = window.location.pathname;
   if (userId && authToken && currentPage === "/FrontEnd/index.html") {
     adminMode();
+    const loginBtn = document.querySelector(".login");
+    const logoutBtn = document.getElementById("logout-btn");
+    loginBtn.classList.toggle("hidden");
+    logoutBtn.classList.toggle("hidden");
   } else if (
     userId &&
     authToken &&
