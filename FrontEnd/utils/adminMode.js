@@ -15,8 +15,8 @@ const adminMode = () => {
   const createModifier = (className, content) => {
     const modifier = document.createElement("div");
     modifier.innerHTML = `
-      <div class="modifier ${className}">
-        <i class="fa-regular fa-pen-to-square fa-lg"></i>
+      <div class="modifier ${className} flex">
+        <i class="fa-regular fa-pen-to-square fa-lg flex"></i>
         <p>${content}</p>
       </div>
     `;

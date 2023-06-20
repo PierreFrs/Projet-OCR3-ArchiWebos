@@ -28,7 +28,7 @@ const handlePhotoUpload = () => {
 
 // Affiche la photo choisie par l'utilisateur
 const updatePicturePlaceholder = (imageUrl) => {
-  picturePlaceholder.innerHTML = `<div class="temp-image-container">
+  picturePlaceholder.innerHTML = `<div class="temp-image-container flex">
                                     <img src="${imageUrl}" class="temp-image">
                                   </div>`;
 };

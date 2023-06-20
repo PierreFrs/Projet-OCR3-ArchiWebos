@@ -7,7 +7,7 @@ const displayModaleGallery = (list, modaleGallery) => {
       return `<div class="modale-gallery-item" id=${id}>
               <div class="modale-img-container">
                 <img src="${imageUrl}" alt="" />
-                <div class="trash-container">
+                <div class="trash-container flex">
                   <i
                     class="fa-sharp fa-regular fa-trash-can fa-2xs"
                     style="color: #ffffff"

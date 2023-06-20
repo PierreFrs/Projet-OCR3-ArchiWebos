@@ -3,94 +3,15 @@
    License: none (public domain)
 */
 
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+/* Reset styles */
+*,
+::before,
+::after {
   margin: 0;
   padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+  box-sizing: border-box;
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -110,10 +31,12 @@ ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -131,8 +54,7 @@ figcaption {
   margin-top: 7px;
 }
 
-/** end reset css**/
-
+/* Body styles */
 body {
   line-height: 1;
   background-color: #fffef8;
@@ -144,14 +66,14 @@ body {
   padding-bottom: 60px;
 }
 
+/* Header styles */
 header {
-  display: flex;
   justify-content: space-between;
   margin: 50px 0;
 }
 
+/* Footer styles */
 footer {
-  display: flex;
   align-items: center;
   justify-content: right;
   height: 60px;
@@ -163,17 +85,17 @@ footer {
 }
 
 footer nav ul {
-  display: flex;
   justify-content: flex-end;
   margin: 2em;
 }
 
+/* Section styles */
 section {
   margin: 50px 0;
 }
 
+/* Heading styles */
 h1 {
-  display: flex;
   flex-direction: column;
   font-family: "Syne";
   font-size: 22px;
@@ -194,34 +116,36 @@ h2 {
   color: #1d6154;
 }
 
+/* Navigation styles */
 nav ul {
-  display: flex;
   align-items: center;
-
   list-style-type: none;
 }
+
 nav li {
   padding: 0 20px;
   font-size: 1.2em;
   cursor: pointer;
 }
+
 nav li a {
   color: black;
   text-decoration: none;
 }
 
-li:hover,
+nav li:hover,
 a:hover {
   color: #b1663c;
 }
 
-li img {
+nav li img {
   width: 19.36px;
   vertical-align: middle;
 }
 
+/* Button styles */
 .button {
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 50px;
   padding: 0.7rem 1rem;
@@ -238,13 +162,15 @@ li img {
   background-color: #a7a7a7;
 }
 
+/* Introduction section styles */
 #introduction {
-  display: flex;
   align-items: center;
 }
+
 #introduction figure {
   flex: 1;
 }
+
 #introduction img {
   display: block;
   margin: auto;
@@ -254,6 +180,7 @@ li img {
 #introduction article {
   flex: 1;
 }
+
 #introduction h2 {
   margin-bottom: 1em;
 }
@@ -262,6 +189,7 @@ li img {
   margin-bottom: 0.5em;
 }
 
+/* Portfolio section */
 #portfolio {
   position: relative;
 }
@@ -273,7 +201,6 @@ li img {
 
 .filters-container {
   width: 100%;
-  display: flex;
   justify-content: center;
   gap: 1rem;
   margin: 50px auto;
@@ -315,43 +242,47 @@ li img {
 .gallery {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .gallery img {
   width: 100%;
 }
+
+/* Contact section */
 #contact {
   width: 50%;
   margin: auto;
 }
+
 #contact > * {
   text-align: center;
 }
+
 #contact h2 {
   margin-bottom: 20px;
 }
+
 #contact form {
   text-align: left;
   margin-top: 30px;
-  display: flex;
   flex-direction: column;
 }
 
 #contact input {
   height: 50px;
   font-size: 1.2em;
+}
+
+#contact textarea,
+#contact input {
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 #contact label {
   margin: 2em 0 1em 0;
-}
-#contact textarea {
-  border: none;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
 input[type="submit"] {
@@ -373,7 +304,6 @@ input[type="submit"] {
 
 #login-body {
   height: 100vh;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -399,10 +329,10 @@ input[type="submit"] {
   font-family: "Syne";
   text-align: center;
 }
+
 #login form {
   text-align: left;
   margin-top: 30px;
-  display: flex;
   flex-direction: column;
 }
 
@@ -410,6 +340,7 @@ input[type="submit"] {
   color: #3d3d3d;
   font-size: 14px;
   font-weight: 500;
+  margin: 2em 0 1em 0;
 }
 
 #login input {
@@ -430,10 +361,6 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-#login label {
-  margin: 2em 0 1em 0;
-}
-
 #forgot {
   text-align: center;
   color: #3d3d3d;
@@ -443,6 +370,7 @@ input[type="submit"] {
 .error-message {
   color: red;
 }
+
 .success-message {
   color: green;
   margin-top: 8px;
@@ -490,7 +418,6 @@ input[type="submit"] {
 }
 
 .modifier {
-  display: flex;
   gap: 11px;
 }
 
@@ -499,7 +426,6 @@ input[type="submit"] {
 }
 
 .modifier p:hover {
-  cursor: pointer;
   opacity: 0.6;
 }
 
@@ -517,13 +443,11 @@ input[type="submit"] {
 .photo-modifier i,
 .projects-modifier i {
   color: #000;
-  display: flex;
   align-items: center;
   vertical-align: middle;
 }
 
-/* modale accueil style */
-
+/* modale overlay style */
 .modale-overlay {
   position: fixed;
   top: 0;
@@ -535,10 +459,9 @@ input[type="submit"] {
   background-color: black;
   opacity: 0.4;
   z-index: 10;
-  justify-content: center;
-  justify-items: center;
 }
 
+/* modale style */
 #modale {
   width: 630px;
   position: fixed;
@@ -553,7 +476,6 @@ input[type="submit"] {
 
 .modale-container {
   position: relative;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -588,7 +510,6 @@ input[type="submit"] {
 }
 
 .modale-gallery {
-  display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin: 0 73px;
@@ -616,7 +537,6 @@ input[type="submit"] {
   position: absolute;
   top: 6px;
   right: 6px;
-  display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 2px;
@@ -663,7 +583,6 @@ input[type="submit"] {
   width: 420px;
   height: 169px;
   background-color: #e8f1f6;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -695,12 +614,12 @@ input[type="submit"] {
 }
 
 .add-photo-form {
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: left;
 }
+
 .add-photo-form label {
   width: 100%;
   margin-top: 20px;
@@ -709,27 +628,24 @@ input[type="submit"] {
   color: #3d3d3d;
 }
 
-.add-photo-form input {
-  width: 380px;
+.add-photo-form input,
+.add-photo-form select {
+  width: 420px;
   border: none;
   box-shadow: 4px 6px 25px -6px rgba(0, 0, 0, 0.2);
   margin-top: 10px;
   padding: 23px 21px;
+}
+
+.add-photo-form input {
+  width: 380px;
 }
 
 .add-photo-form select {
-  width: 420px;
   background-color: white;
-  border: none;
-  box-shadow: 4px 6px 25px -6px rgba(0, 0, 0, 0.2);
-  margin-top: 10px;
-  padding: 23px 21px;
   font-family: "Work Sans";
   cursor: pointer;
   appearance: none;
-}
-
-select {
   background-image: url("./icons/caret-down-light.svg");
   background-size: 24px;
   background-repeat: no-repeat;
@@ -747,10 +663,10 @@ select {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  display: flex;
   justify-content: center;
   align-self: center;
 }
+
 .temp-image {
   height: 100%;
 }
@@ -759,8 +675,7 @@ select {
   font-family: "Work Sans";
 }
 
-/* toggled classes */
-
+/* toggled and DRY classes*/
 .hidden {
   display: none;
 }
@@ -772,5 +687,3 @@ select {
 .block {
   display: block;
 }
-
-/* end toggled classes */
