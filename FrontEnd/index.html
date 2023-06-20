@@ -14,11 +14,14 @@
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
+    <!-- admin header -->
     <div class="admin-header">
       <i class="fa-regular fa-pen-to-square fa-lg"></i>
       <p>Mode édition</p>
       <button class="publish-btn">publier les changements</button>
     </div>
+    <!-- end admin header -->
+    <!-- main header -->
     <header>
       <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
       <nav>
@@ -33,7 +36,10 @@
         </ul>
       </nav>
     </header>
+    <!-- end main header -->
+    <!-- main section -->
     <main>
+      <!-- intro section -->
       <section id="introduction">
         <figure>
           <img
@@ -61,6 +67,8 @@
           </p>
         </article>
       </section>
+      <!-- end intro section -->
+      <!-- portfolio section -->
       <section id="portfolio">
         <h2 class="projects-title">Mes Projets</h2>
         <div class="filters-container">
@@ -70,6 +78,8 @@
           <!-- Projects displayed dynamically in app.js -->
         </div>
       </section>
+      <!-- end portfolio section -->
+      <!-- contact section -->
       <section id="contact">
         <h2>Contact</h2>
         <p>Vous avez un projet ? Discutons-en !</p>
@@ -83,6 +93,8 @@
           <input type="submit" value="Envoyer" />
         </form>
       </section>
+      <!-- end contact section -->
+      <!-- modale section -->
       <div class="modale-overlay hidden"></div>
       <aside id="modale" class="modale hidden">
         <div class="left-arrow-container hidden">
@@ -91,8 +103,10 @@
         <i class="fa-solid fa-xmark close-modale-btn fa-lg"></i>
         <div class="modale-container"></div>
       </aside>
+      <!-- end modale section -->
     </main>
-
+    <!-- main section -->
+    <!-- footer -->
     <footer>
       <nav>
         <ul>
@@ -100,6 +114,8 @@
         </ul>
       </nav>
     </footer>
+    <!-- end footer -->
+    <!-- scripts -->
     <script
       src="https://kit.fontawesome.com/8ab3b6bdf1.js"
       crossorigin="anonymous"
@@ -119,5 +135,6 @@
     <script type="module" src="./utils/postWork.js"></script>
     <script type="module" src="./utils/updateGalleries.js"></script>
     <script type="module" src="./utils/logout.js"></script>
+    <!-- end scripts -->
   </body>
 </html>
