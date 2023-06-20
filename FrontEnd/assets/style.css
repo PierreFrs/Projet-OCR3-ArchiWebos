@@ -628,9 +628,13 @@ input[type="submit"] {
   color: #3d3d3d;
 }
 
+#titre,
+#categorie {
+  width: 420px;
+}
+
 .add-photo-form input,
 .add-photo-form select {
-  width: 420px;
   border: none;
   box-shadow: 4px 6px 25px -6px rgba(0, 0, 0, 0.2);
   margin-top: 10px;
