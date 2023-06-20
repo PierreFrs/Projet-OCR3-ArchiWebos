@@ -252,6 +252,7 @@ nav li img {
 
 /* Contact section */
 #contact {
+  flex-direction: column;
   width: 50%;
   margin: auto;
 }
@@ -273,6 +274,10 @@ nav li img {
 #contact input {
   height: 50px;
   font-size: 1.2em;
+}
+
+#contact input[type="email"] {
+  width: 100%;
 }
 
 #contact textarea,

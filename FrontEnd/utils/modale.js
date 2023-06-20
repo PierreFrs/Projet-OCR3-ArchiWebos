@@ -15,6 +15,13 @@ const openModale = () => {
 const closeModale = () => {
   modale.classList.add("hidden");
   modaleOverlay.classList.add("hidden");
+  resetModale();
+  createMainModalePage();
+  createAddPage();
+};
+
+const resetModale = () => {
+  modaleContainer.innerHTML = "";
 };
 
 // Crée le contenu du modaleContainer
@@ -22,6 +29,7 @@ const closeModale = () => {
 const createMainModalePage = () => {
   const mainModalePage = document.createElement("div");
   mainModalePage.classList.add("main-modale-page");
+
   mainModalePage.innerHTML = `<h3 class="modale-title">Galerie photo</h3>
           <div class="modale-gallery flex">
           </div>
