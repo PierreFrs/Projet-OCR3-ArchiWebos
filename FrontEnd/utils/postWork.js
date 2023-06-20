@@ -41,7 +41,6 @@ const updatePicturePlaceholder = (imageUrl) => {
                                     <img src="${imageUrl}" class="temp-image">
                                   </div>`;
   insertAfter(tempPicturePlaceholder, addModaleTitle);
-  console.log(tempPicturePlaceholder);
 };
 
 // Event listener du boutton ajouter

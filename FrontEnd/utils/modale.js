@@ -58,8 +58,7 @@ const createMainModalePage = () => {
 // Add Page
 const createAddPage = () => {
   const addPage = document.createElement("div");
-  addPage.classList.add("modale-add-page");
-  addPage.classList.add("hidden");
+  addPage.classList.add("modale-add-page", "hidden");
 
   addPage.innerHTML = `<h3 class="modale-title add-modale-title">Ajout photo</h3>
         <div class="picture-placeholder flex">
@@ -93,6 +92,7 @@ createAddPage();
 const toggleModalePage = () => {
   const mainModalePage = document.querySelector(".main-modale-page");
   const addPage = document.querySelector(".modale-add-page");
+
   mainModalePage.classList.toggle("hidden");
   addPage.classList.toggle("hidden");
   returnArrow.classList.toggle("hidden");
@@ -114,6 +114,7 @@ goToAddBtn.addEventListener("click", () => {
 
   toggleModalePage();
 });
+
 returnArrow.addEventListener("click", toggleModalePage);
 
 export { openModale, closeModale };

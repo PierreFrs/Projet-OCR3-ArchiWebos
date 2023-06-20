@@ -22,10 +22,13 @@ const filterProjects = async (e) => {
 // Change la couleur du bouton filtre actif
 const changeFilterButtonColor = (el) => {
   const filterBtns = document.querySelectorAll(".filter-btn");
-  filterBtns.forEach((btn) => {
-    btn.classList.remove("active-filter-btn");
-  });
-  el.classList.add("active-filter-btn");
+  if (el.classList.contains("filter-btn")) {
+    filterBtns.forEach((btn) => {
+      btn.classList.remove("active-filter-btn");
+    });
+
+    el.classList.add("active-filter-btn");
+  }
 };
 
 export { filterProjects, changeFilterButtonColor };
