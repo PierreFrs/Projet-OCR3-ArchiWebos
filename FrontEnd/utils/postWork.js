@@ -5,67 +5,40 @@ import resetErrors from "./resetErrors.js";
 const addPhotoBtn = document.querySelector(".add-photo-btn");
 const addPhotoInput = document.getElementById("addPhotoInput");
 const picturePlaceholder = document.querySelector(".picture-placeholder");
-const tempImage = document.querySelector(".temp-image");
 const titleInput = document.getElementById("titre");
 const categoryInput = document.getElementById("categorie");
 const validateBtn = document.querySelector(".valider");
 
-// // fonction permettant l'upload d'une nouvelle photo
-// addPhotoBtn.addEventListener("click", () => {
-//   addPhotoInput.click();
-// });
-
-// addPhotoInput.addEventListener("change", handlePhotoUpload);
-
-// function handlePhotoUpload() {
-//   const file = addPhotoInput.files[0];
-//   if (file) {
-//     const reader = new FileReader();
-
-//     reader.addEventListener("load", () => {
-//       const imageUrl = reader.result;
-//       picturePlaceholder.innerHTML = `<div class="temp-image-container">
-//                                       <img src="${imageUrl}" class="temp-image" >
-//                                       </div>`;
-//     });
-
-//     reader.readAsDataURL(file);
-//   }
-//   toggleValidateBtn();
-// }
-
 // Function for handling the photo upload and returning the image URL
-function handlePhotoUpload() {
+const handlePhotoUpload = () => {
   return new Promise((resolve, reject) => {
     const file = addPhotoInput.files[0];
     if (file) {
       const reader = new FileReader();
-
       reader.addEventListener("load", () => {
         const imageUrl = reader.result;
         resolve(imageUrl);
       });
-
       reader.readAsDataURL(file);
     } else {
       reject("No file selected.");
     }
   });
-}
+};
 
-// Function for updating the picture placeholder with the uploaded image
-function updatePicturePlaceholder(imageUrl) {
+// Affiche la photo choisie par l'utilisateur
+const updatePicturePlaceholder = (imageUrl) => {
   picturePlaceholder.innerHTML = `<div class="temp-image-container">
                                     <img src="${imageUrl}" class="temp-image">
                                   </div>`;
-}
+};
 
-// Event listener for the add photo button
+// Event listener du boutton ajouter
 addPhotoBtn.addEventListener("click", () => {
   addPhotoInput.click();
 });
 
-// Event listener for the add photo input change event
+// Event listener de l'input photo
 addPhotoInput.addEventListener("change", async () => {
   try {
     const imageUrl = await handlePhotoUpload();
@@ -76,17 +49,6 @@ addPhotoInput.addEventListener("change", async () => {
   }
 });
 
-// // reset sur les infos entrées dans la page add
-// function resetPhotoUpload() {
-//   addPhotoInput.value = ""; // Clear the file input
-//   picturePlaceholder.innerHTML = `<div class="image-icon-container">
-//             <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#b9c5cc}</style><path d="M448 80c8.8 0 16 7.2 16 16V415.8l-5-6.5-136-176c-4.5-5.9-11.6-9.3-19-9.3s-14.4 3.4-19 9.3L202 340.7l-30.5-42.7C167 291.7 159.8 288 152 288s-15 3.7-19.5 10.1l-80 112L48 416.3l0-.3V96c0-8.8 7.2-16 16-16H448zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"/></svg>
-//           </div>
-//           <button class="add-photo-btn"><input type="file" id="addPhotoInput" accept="image/*" class="hidden">+ Ajouter photo</button>
-//           <p class="photo-format">jpg, png : 4mo max</p>  `; // Clear the picture placeholder
-//   toggleValidateBtn(); // Reset the state of the validate button
-// }
-
 // fonction activant le bouton valider
 const toggleValidateBtn = () => {
   validateBtn.disabled = !validateBtn.disabled;
@@ -94,47 +56,42 @@ const toggleValidateBtn = () => {
   validateBtn.classList.toggle("green-button");
 };
 
-validateBtn.addEventListener("click", () => {
-  console.log("click");
-});
+// Vérifications des informations du formulaire d'ajout de projet
 
-// message d'erreur si input vide
 const verifyTitle = () => {
-  let validate = true;
   const projectTitle = titleInput.value;
 
-  const errorMsgTitle = document.createElement("p");
-  errorMsgTitle.classList.add("error-message");
   if (!projectTitle) {
-    validate = false;
+    const errorMsgTitle = document.createElement("p");
+    errorMsgTitle.classList.add("error-message");
     errorMsgTitle.textContent = "Ce champ ne peut être vide";
     insertAfter(errorMsgTitle, titleInput);
+    return false;
   }
-  return validate;
+  return true;
 };
 
 const verifyCategory = () => {
-  let validate = true;
   const projectCategory = categoryInput.value;
-  const errorMsgCategory = document.createElement("p");
-  errorMsgCategory.classList.add("error-message");
+
   if (!projectCategory) {
-    validate = false;
+    const errorMsgCategory = document.createElement("p");
+    errorMsgCategory.classList.add("error-message");
     errorMsgCategory.textContent = "Ce champ ne peut être vide";
     insertAfter(errorMsgCategory, categoryInput);
+    return false;
   }
-  return validate;
+  return true;
 };
 
+// Combine les deux fonctions précédentes
 const verifyInfos = () => {
-  let validate = true;
-  verifyTitle();
-  verifyCategory();
-  return validate;
+  const isValidTitle = verifyTitle();
+  const isValidCategory = verifyCategory();
+  return isValidTitle && isValidCategory;
 };
 
-// post request
-
+// Gere l'envoie de la requete POST
 const postItem = async (e) => {
   e.preventDefault();
 
@@ -147,8 +104,7 @@ const postItem = async (e) => {
   const category = parseInt(categoryInput.value);
   const uploadedImage = addPhotoInput.files[0];
 
-  const validate = verifyInfos();
-  if (!validate) {
+  if (!verifyInfos()) {
     return;
   }
 
@@ -185,7 +141,12 @@ const postItem = async (e) => {
   }
 };
 
+// affiche un message si la création du nouveau projet est un succès
 const successMessage = () => {
+  const existingSuccessMsg = document.querySelector(".success-message");
+  if (existingSuccessMsg) {
+    existingSuccessMsg.remove();
+  }
   const successMsg = document.createElement("p");
   successMsg.textContent = "Le projet a été ajouté avec succès";
   successMsg.classList.add("success-message");

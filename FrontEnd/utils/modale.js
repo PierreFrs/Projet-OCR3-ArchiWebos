@@ -4,39 +4,22 @@ const modaleOverlay = document.querySelector(".modale-overlay");
 const modale = document.getElementById("modale");
 const returnArrow = document.querySelector(".left-arrow-container");
 const modaleContainer = document.querySelector(".modale-container");
-// const picturePlaceholder = document.querySelector(".picture-placeHolder");
 
 // ouvre et ferme la modale
 
-const displayModaleWindow = () => {
+const openModale = () => {
   modale.classList.remove("hidden");
-};
-
-const displayOverlay = () => {
   modaleOverlay.classList.remove("hidden");
 };
 
-const displayModale = () => {
-  displayModaleWindow();
-  displayOverlay();
-};
-
-const hideOverlay = () => {
-  modaleOverlay.classList.add("hidden");
-};
-
-const hideModaleWindow = () => {
-  modale.classList.add("hidden");
-};
-
 const closeModale = () => {
-  hideOverlay();
-  hideModaleWindow();
+  modale.classList.add("hidden");
+  modaleOverlay.classList.add("hidden");
 };
 
 // Crée le contenu du modaleContainer
 //  Main Modale Page
-const mainModalePageBuilder = () => {
+const createMainModalePage = () => {
   const mainModalePage = document.createElement("div");
   mainModalePage.classList.add("main-modale-page");
   mainModalePage.innerHTML = `<h3 class="modale-title">Galerie photo</h3>
@@ -46,13 +29,14 @@ const mainModalePageBuilder = () => {
           <button class="go-to-add-photo-btn button green-button">Ajouter une photo</button>
           <button class="gallery-del">Supprimer la galerie</button>`;
   modaleContainer.appendChild(mainModalePage);
+
   const modaleGallery = document.querySelector(".modale-gallery");
   displayModaleGalleryOnLoad(modaleGallery);
 };
-mainModalePageBuilder();
+createMainModalePage();
 
 // Add Page
-const addPageBuilder = () => {
+const createAddPage = () => {
   const addPage = document.createElement("div");
   addPage.classList.add("modale-add-page");
   addPage.classList.add("hidden");
@@ -78,9 +62,10 @@ const addPageBuilder = () => {
         </form>
         <hr />
         <button type="submit" class="valider button grey-button" disabled>Valider</button>`;
+
   modaleContainer.appendChild(addPage);
 };
-addPageBuilder();
+createAddPage();
 
 // Redirige vers la page d'ajout
 const toggleModalePage = () => {
@@ -91,11 +76,10 @@ const toggleModalePage = () => {
   returnArrow.classList.toggle("hidden");
 };
 
-// page ajouter une photo
-let goToAddBtn;
-goToAddBtn = modaleContainer.querySelector(".go-to-add-photo-btn");
+// bouton menant sur la page d'ajout de projet
 
+const goToAddBtn = modaleContainer.querySelector(".go-to-add-photo-btn");
 goToAddBtn.addEventListener("click", toggleModalePage);
 returnArrow.addEventListener("click", toggleModalePage);
 
-export { displayModale, closeModale };
+export { openModale, closeModale };

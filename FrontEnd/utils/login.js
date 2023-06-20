@@ -8,103 +8,99 @@ const submitBtn = document.getElementById("submit-btn");
 
 verifyLocalStorage();
 
-// fonctions de verification des infos
+// fonctions de verification des infos du formulaire de login
 
 const verifyEmail = () => {
-  let validate = true;
   const userEmail = emailInput.value;
 
   const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  const errorMsgEmail = document.createElement("p");
-  errorMsgEmail.classList.add("error-message");
+  const errorMsgEmail = createErrorMessage("L'email doit être valide");
+
   if (!emailRegEx.test(userEmail) && userEmail !== "") {
-    validate = false;
-    errorMsgEmail.textContent = "L'email doit être valide";
     insertAfter(errorMsgEmail, emailInput);
+    return false;
   } else if (userEmail === "") {
-    validate = false;
     errorMsgEmail.textContent = "Ce champ ne peut être vide";
     insertAfter(errorMsgEmail, emailInput);
+    return false;
   }
-  return validate;
+  return true;
 };
 
 const verifyPassword = () => {
-  let validate = true;
   const userPassword = passwordInput.value;
-  const errorMsgPassword = document.createElement("p");
-  errorMsgPassword.classList.add("error-message");
+  const errorMsgPassword = createErrorMessage("Ce champ ne peut être vide");
+
   if (userPassword === "") {
-    validate = false;
-    errorMsgPassword.textContent = "Ce champ ne peut être vide";
     insertAfter(errorMsgPassword, passwordInput);
+    return false;
   }
-  return validate;
+  return true;
 };
 
+const createErrorMessage = (text) => {
+  const errorMsg = document.createElement("p");
+  errorMsg.classList.add("error-message");
+  errorMsg.textContent = text;
+  return errorMsg;
+};
+
+// Combine les deux fonctions précédentes
 const verifyInfos = () => {
-  let validate = true;
-  verifyEmail();
-  verifyPassword();
-  return validate;
+  const isEmailValid = verifyEmail();
+  const isPasswordValid = verifyPassword();
+  return isEmailValid && isPasswordValid;
 };
 
-// fonction pour envoyer les infos
-
-const sendInfos = () => {
+// fonction pour envoyer la requete POST
+const sendInfos = async () => {
   const url = "http://localhost:5678/api/users/login";
   const email = emailInput.value;
   const password = passwordInput.value;
 
   const data = {
-    email: email,
-    password: password,
+    email,
+    password,
   };
-  fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((responseData) => {
-      // Handle the response from the server
-      if (responseData.userId && responseData.token) {
-        // Positive response
-        console.log("Login successful");
-        window.localStorage.setItem("userId", responseData.userId);
-        window.localStorage.setItem("token", responseData.token);
-        window.location.replace("../index.html");
-      } else {
-        // Negative response
-        console.log("Login failed");
-        const errorMsgPassword = document.createElement("p");
-        errorMsgPassword.classList.add("error-message");
-        errorMsgPassword.textContent =
-          "L'identification a échoué, veuillez réessayer ou cliquer sur 'Mot de passe oublié'.";
-        insertAfter(errorMsgPassword, submitBtn);
-      }
-    })
-    .catch((error) => {
-      // Handle any errors
-      console.error("Error:", error);
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     });
+
+    const responseData = await response.json();
+
+    if (responseData.userId && responseData.token) {
+      console.log("Login successful");
+      window.localStorage.setItem("userId", responseData.userId);
+      window.localStorage.setItem("token", responseData.token);
+      window.location.replace("../index.html");
+    } else {
+      console.log("Login failed");
+      const errorMsgPassword = createErrorMessage(
+        "L'identification a échoué, veuillez réessayer ou cliquer sur 'Mot de passe oublié'."
+      );
+      insertAfter(errorMsgPassword, submitBtn);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
 };
 
-// fonction pour rediriger si infos ok
-
+// fonction pour activer la fonction sendInfos après vérification desdites infos
 const handleSubmit = (e) => {
   e.preventDefault();
   resetErrors();
-  let validate = true;
-  verifyInfos();
-  console.log(validate);
-  if (validate) {
+  const isFormValid = verifyInfos();
+
+  if (isFormValid) {
     sendInfos();
   }
 };
 
-//event listener
-
+// event listener du bouton login
 submitBtn.addEventListener("click", handleSubmit);

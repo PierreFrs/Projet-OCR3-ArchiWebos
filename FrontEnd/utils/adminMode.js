@@ -1,26 +1,34 @@
 import insertAfter from "./insertAfter.js";
 
 const gallery = document.querySelector(".gallery");
-// Handles the administrator mode
+
+// transforme la page d'accueil en page admin ou "admin mode"
 const adminMode = () => {
   const adminHeader = document.querySelector(".admin-header");
   adminHeader.style.display = "flex";
+
   const filtersContainer = document.querySelector(".filters-container");
   filtersContainer.classList.add("hidden");
+
   gallery.classList.add("gallery-margin");
-  const photoModifier = document.createElement("div");
-  photoModifier.innerHTML = `<div class="modifier photo-modifier">
-            <i class="fa-regular fa-pen-to-square fa-lg"></i>
-            <p>modifier</p>
-          </div>`;
+
+  const createModifier = (className, content) => {
+    const modifier = document.createElement("div");
+    modifier.innerHTML = `
+      <div class="modifier ${className}">
+        <i class="fa-regular fa-pen-to-square fa-lg"></i>
+        <p>${content}</p>
+      </div>
+    `;
+    return modifier;
+  };
+
   const adminPhoto = document.querySelector(".admin-photo");
+  const photoModifier = createModifier("photo-modifier", "modifier");
   insertAfter(photoModifier, adminPhoto);
-  const projectsModifier = document.createElement("div");
-  projectsModifier.innerHTML = `<div class="modifier projects-modifier">
-            <i class="fa-regular fa-pen-to-square fa-lg"></i>
-            <p>modifier</p>
-          </div>`;
+
   const projectsTitle = document.querySelector(".projects-title");
+  const projectsModifier = createModifier("projects-modifier", "modifier");
   insertAfter(projectsModifier, projectsTitle);
 };
 

@@ -1,11 +1,9 @@
 import fetchWorks from "./fetchWorks.js";
 
-// modaleGalleryDisplay
+// Fonction d'affichage dynamique des projets dans la modale
 const displayModaleGallery = (list, modaleGallery) => {
   const projectsList = list
-    .map((project) => {
-      const { id, imageUrl } = project;
-
+    .map(({ id, imageUrl }) => {
       return `<div class="modale-gallery-item" id=${id}>
               <div class="modale-img-container">
                 <img src="${imageUrl}" alt="" />
@@ -24,6 +22,7 @@ const displayModaleGallery = (list, modaleGallery) => {
   modaleGallery.innerHTML = projectsList;
 };
 
+// Fonction récupérant les travaux sur l'API et les envoie vers la fonction displayModaleGallery
 const displayModaleGalleryOnLoad = async (modaleGallery) => {
   const list = await fetchWorks();
   return displayModaleGallery(list, modaleGallery);

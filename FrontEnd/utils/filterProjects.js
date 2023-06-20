@@ -1,6 +1,7 @@
 import fetchWorks from "./fetchWorks.js";
 import { displayGallery } from "./displayGallery.js";
 
+// Fonction permettant de filtrer les projets en fonction du boutton sur lequel on appui
 const filterProjects = async (e) => {
   const el = e.target;
   const list = await fetchWorks();
@@ -9,15 +10,16 @@ const filterProjects = async (e) => {
     if (el.dataset.id === "Tous") {
       filteredProjects = list;
     } else {
-      filteredProjects = list.filter((project) => {
-        return project.categoryId === parseInt(el.dataset.id);
-      });
+      filteredProjects = list.filter(
+        (project) => project.categoryId === parseInt(el.dataset.id)
+      );
     }
     displayGallery(filteredProjects);
   }
   changeFilterButtonColor(el);
 };
 
+// Change la couleur du bouton filtre actif
 const changeFilterButtonColor = (el) => {
   const filterBtns = document.querySelectorAll(".filter-btn");
   filterBtns.forEach((btn) => {
