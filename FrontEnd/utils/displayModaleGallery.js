@@ -1,5 +1,7 @@
+import fetchWorks from "./fetchWorks.js";
+
 // modaleGalleryDisplay
-const modaleGalleryDisplay = (list, modaleGallery) => {
+const displayModaleGallery = (list, modaleGallery) => {
   const projectsList = list
     .map((project) => {
       const { id, imageUrl } = project;
@@ -22,4 +24,9 @@ const modaleGalleryDisplay = (list, modaleGallery) => {
   modaleGallery.innerHTML = projectsList;
 };
 
-export default modaleGalleryDisplay;
+const displayModaleGalleryOnLoad = async (modaleGallery) => {
+  const list = await fetchWorks();
+  return displayModaleGallery(list, modaleGallery);
+};
+
+export { displayModaleGallery, displayModaleGalleryOnLoad };

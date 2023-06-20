@@ -22,6 +22,8 @@ const displayButtons = async () => {
       }</button>`;
     })
     .join("");
+  const tousBtn = document.querySelector("[data-id='Tous']");
+  tousBtn.classList.add("active-filter-btn");
 };
 
 export default displayButtons;

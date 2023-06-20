@@ -1,10 +1,12 @@
-import fetchWorks from "./utils/fetchWorks.js";
 import verifyLocalStorage from "./utils/verifyLocalStorage.js";
 import displayButtons from "./utils/displayButtons.js";
-import displayGallery from "./utils/displayGallery.js";
-import displayGalleryOnLoad from "./utils/displayGalleryOnLoad.js";
+import { displayGalleryOnLoad } from "./utils/displayGallery.js";
 import { displayModale, closeModale } from "./utils/modale.js";
 import logout from "./utils/logout.js";
+import {
+  filterProjects,
+  changeFilterButtonColor,
+} from "./utils/filterProjects.js";
 
 const modaleOverlay = document.querySelector(".modale-overlay");
 const closeModaleBtn = document.querySelector(".close-modale-btn");
@@ -20,20 +22,9 @@ displayGalleryOnLoad();
 
 // Event listeners des boutons filtres
 
-filtersDOM.addEventListener("click", async (e) => {
-  const el = e.target;
-  const list = await fetchWorks();
-  let filteredProjects;
-  if (el.classList.contains("filter-btn")) {
-    if (el.dataset.id === "Tous") {
-      filteredProjects = list;
-    } else {
-      filteredProjects = list.filter((project) => {
-        return project.categoryId === parseInt(el.dataset.id);
-      });
-    }
-    displayGallery(filteredProjects);
-  }
+filtersDOM.addEventListener("click", (e) => {
+  filterProjects(e);
+  // changeFilterButtonColor(e);
 });
 
 // event listeners pour la modale
@@ -45,10 +36,8 @@ modaleOverlay.addEventListener("click", closeModale);
 
 logoutBtn.addEventListener("click", logout);
 
-const projectsModifier = document.querySelector(".projects-modifier");
-
 // event listener pour ouvrir la modale
-
+const projectsModifier = document.querySelector(".projects-modifier");
 projectsModifier.addEventListener("click", () => {
   displayModale();
 });

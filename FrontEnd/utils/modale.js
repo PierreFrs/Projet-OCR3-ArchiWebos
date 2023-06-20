@@ -1,4 +1,4 @@
-import modaleGalleryDisplayOnLoad from "./modaleGalleryDisplayOnLoad.js";
+import { displayModaleGalleryOnLoad } from "./displayModaleGallery.js";
 
 const modaleOverlay = document.querySelector(".modale-overlay");
 const modale = document.getElementById("modale");
@@ -47,17 +47,9 @@ const mainModalePageBuilder = () => {
           <button class="gallery-del">Supprimer la galerie</button>`;
   modaleContainer.appendChild(mainModalePage);
   const modaleGallery = document.querySelector(".modale-gallery");
-  modaleGalleryDisplayOnLoad(modaleGallery);
+  displayModaleGalleryOnLoad(modaleGallery);
 };
 mainModalePageBuilder();
-
-// Crée la gallerie de la modale
-// const createModaleGallery = async () => {
-//   const modaleGallery = document.querySelector(".modale-gallery");
-//   const galleryItems = await modaleGalleryDisplayOnLoad();
-//   modaleGallery.innerHTML = galleryItems;
-// };
-// createModaleGallery();
 
 // Add Page
 const addPageBuilder = () => {

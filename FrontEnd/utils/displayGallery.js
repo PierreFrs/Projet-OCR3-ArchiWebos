@@ -1,3 +1,5 @@
+import fetchWorks from "./fetchWorks.js";
+
 const gallery = document.querySelector(".gallery");
 
 // Fonction d'affichage dynamique des projets
@@ -15,4 +17,9 @@ const displayGallery = (list) => {
   gallery.innerHTML = projectsList;
 };
 
-export default displayGallery;
+const displayGalleryOnLoad = async () => {
+  const list = await fetchWorks();
+  displayGallery(list);
+};
+
+export { displayGallery, displayGalleryOnLoad };

@@ -290,10 +290,14 @@ li img {
   cursor: pointer;
   font-family: "Syne";
 }
-.filter-btn:nth-child(1) {
-  padding: 0.75rem 1.5rem;
+
+.active-filter-btn {
   color: #e5e5e5;
   background-color: #1d6154;
+}
+
+.filter-btn:nth-child(1) {
+  padding: 0.75rem 1.5rem;
 }
 
 .filter-btn:nth-child(2) {
