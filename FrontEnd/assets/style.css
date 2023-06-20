@@ -584,7 +584,8 @@ input[type="submit"] {
 
 /* modale ajouter style */
 
-.picture-placeholder {
+.picture-placeholder,
+.temp-picture-placeholder {
   width: 420px;
   height: 169px;
   background-color: #e8f1f6;

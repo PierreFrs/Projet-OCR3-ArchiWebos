@@ -1,6 +1,7 @@
 import insertAfter from "./insertAfter.js";
 import updateGalleries from "./updateGalleries.js";
 import resetErrors from "./resetErrors.js";
+import toggleValidateBtn from "./toggleValidateBtn.js";
 
 const addPhotoBtn = document.querySelector(".add-photo-btn");
 const addPhotoInput = document.getElementById("addPhotoInput");
@@ -28,9 +29,19 @@ const handlePhotoUpload = () => {
 
 // Affiche la photo choisie par l'utilisateur
 const updatePicturePlaceholder = (imageUrl) => {
-  picturePlaceholder.innerHTML = `<div class="temp-image-container flex">
+  picturePlaceholder.classList.remove("flex");
+  picturePlaceholder.classList.add("hidden");
+
+  const addModaleTitle = document.querySelector(".add-modale-title");
+
+  const tempPicturePlaceholder = document.createElement("div");
+  tempPicturePlaceholder.classList.add("temp-picture-placeholder");
+
+  tempPicturePlaceholder.innerHTML = `<div class="temp-image-container flex">
                                     <img src="${imageUrl}" class="temp-image">
                                   </div>`;
+  insertAfter(tempPicturePlaceholder, addModaleTitle);
+  console.log(tempPicturePlaceholder);
 };
 
 // Event listener du boutton ajouter
@@ -43,18 +54,11 @@ addPhotoInput.addEventListener("change", async () => {
   try {
     const imageUrl = await handlePhotoUpload();
     updatePicturePlaceholder(imageUrl);
-    toggleValidateBtn();
+    toggleValidateBtn(validateBtn);
   } catch (error) {
     console.error(error);
   }
 });
-
-// fonction activant le bouton valider
-const toggleValidateBtn = () => {
-  validateBtn.disabled = !validateBtn.disabled;
-  validateBtn.classList.toggle("grey-button");
-  validateBtn.classList.toggle("green-button");
-};
 
 // Vérifications des informations du formulaire d'ajout de projet
 
