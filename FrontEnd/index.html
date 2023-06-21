@@ -21,91 +21,99 @@
       <button class="publish-btn">publier les changements</button>
     </div>
     <!-- end admin header -->
-    <!-- main header -->
-    <header class="flex">
-      <h1 class="flex">Sophie Bluel <span>Architecte d'inteérieur</span></h1>
-      <nav>
-        <ul class="flex">
-          <li><a href="#portfolio">projets</a></li>
-          <li><a href="#contact">contact</a></li>
-          <li class="login-li">
-            <a href="./pages/login.html" class="login">login</a>
-          </li>
-          <li id="logout-btn" class="hidden">logout</li>
-          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
-        </ul>
-      </nav>
-    </header>
-    <!-- end main header -->
-    <!-- main section -->
-    <main>
-      <!-- intro section -->
-      <section id="introduction" class="flex">
-        <figure>
-          <img
-            src="./assets/images/sophie-bluel.png"
-            alt=""
-            class="admin-photo"
-          />
-        </figure>
-        <article>
-          <h2>Designer d'espace</h2>
-          <p class="introduction-paragraph">
-            Je raconte votre histoire, je valorise vos idées. Je vous accompagne
-            de la conception à la livraison finale du chantier.
-          </p>
-          <p class="introduction-paragraph">
-            Chaque projet sera étudié en commun, de façon à mettre en valeur les
-            volumes, les matières et les couleurs dans le respect de l’esprit
-            des lieux et le choix adapté des matériaux. Le suivi du chantier
-            sera assuré dans le souci du détail, le respect du planning et du
-            budget.
-          </p>
-          <p class="introduction-paragraph">
-            En cas de besoin, une équipe pluridisciplinaire peut-être constituée
-            : architecte DPLG, décorateur(trice)
-          </p>
-        </article>
-      </section>
-      <!-- end intro section -->
-      <!-- portfolio section -->
-      <section id="portfolio">
-        <h2 class="projects-title">Mes Projets</h2>
-        <div class="filters-container flex">
-          <!-- Buttons displayed dynamically in app.js -->
-        </div>
-        <div class="gallery">
-          <!-- Projects displayed dynamically in app.js -->
-        </div>
-      </section>
-      <!-- end portfolio section -->
-      <!-- contact section -->
-      <section id="contact" class="flex">
-        <h2>Contact</h2>
-        <p>Vous avez un projet ? Discutons-en !</p>
-        <form action="#" method="post" class="flex">
-          <label for="name">Nom</label>
-          <input type="text" name="name" id="name" />
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" />
-          <label for="message">Message</label>
-          <textarea name="message" id="message" cols="30" rows="10"></textarea>
-          <input type="submit" value="Envoyer" />
-        </form>
-      </section>
-      <!-- end contact section -->
-      <!-- modale section -->
-      <div class="modale-overlay hidden"></div>
-      <aside id="modale" class="modale hidden">
-        <div class="left-arrow-container hidden">
-          <i class="fa-solid fa-arrow-left arrow-left fa-lg"></i>
-        </div>
-        <i class="fa-solid fa-xmark close-modale-btn fa-lg"></i>
-        <div class="modale-container flex"></div>
-      </aside>
-      <!-- end modale section -->
-    </main>
-    <!-- main section -->
+    <div class="main-body-container">
+      <!-- main header -->
+      <header class="flex">
+        <h1 class="flex">Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+        <nav>
+          <ul class="flex">
+            <li><a href="#portfolio">projets</a></li>
+            <li><a href="#contact">contact</a></li>
+            <li class="login-li">
+              <a href="./pages/login.html" class="login">login</a>
+            </li>
+            <li id="logout-btn" class="hidden">logout</li>
+            <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+          </ul>
+        </nav>
+      </header>
+      <!-- end main header -->
+      <!-- main section -->
+      <main>
+        <!-- intro section -->
+        <section id="introduction" class="flex">
+          <figure>
+            <img
+              src="./assets/images/sophie-bluel.png"
+              alt=""
+              class="admin-photo"
+            />
+          </figure>
+          <article>
+            <h2>Designer d'espace</h2>
+            <p class="introduction-paragraph">
+              Je raconte votre histoire, je valorise vos idées. Je vous
+              accompagne de la conception à la livraison finale du chantier.
+            </p>
+            <p class="introduction-paragraph">
+              Chaque projet sera étudié en commun, de façon à mettre en valeur
+              les volumes, les matières et les couleurs dans le respect de
+              l’esprit des lieux et le choix adapté des matériaux. Le suivi du
+              chantier sera assuré dans le souci du détail, le respect du
+              planning et du budget.
+            </p>
+            <p class="introduction-paragraph">
+              En cas de besoin, une équipe pluridisciplinaire peut-être
+              constituée : architecte DPLG, décorateur(trice)
+            </p>
+          </article>
+        </section>
+        <!-- end intro section -->
+        <!-- portfolio section -->
+        <section id="portfolio">
+          <h2 class="projects-title">Mes Projets</h2>
+          <div class="filters-container flex">
+            <!-- Buttons displayed dynamically in app.js -->
+          </div>
+          <div class="gallery">
+            <!-- Projects displayed dynamically in app.js -->
+          </div>
+        </section>
+        <!-- end portfolio section -->
+        <!-- contact section -->
+        <section id="contact" class="flex">
+          <h2>Contact</h2>
+          <p>Vous avez un projet ? Discutons-en !</p>
+          <form action="#" method="post" class="flex">
+            <label for="name">Nom</label>
+            <input type="text" name="name" id="name" />
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" />
+            <label for="message">Message</label>
+            <textarea
+              name="message"
+              id="message"
+              cols="30"
+              rows="10"
+            ></textarea>
+            <input type="submit" value="Envoyer" />
+          </form>
+        </section>
+        <!-- end contact section -->
+        <!-- modale section -->
+        <div class="modale-overlay hidden"></div>
+        <aside id="modale" class="modale hidden">
+          <div class="left-arrow-container hidden">
+            <i class="fa-solid fa-arrow-left arrow-left fa-lg"></i>
+          </div>
+          <i class="fa-solid fa-xmark close-modale-btn fa-lg"></i>
+          <div class="modale-container flex"></div>
+        </aside>
+        <!-- end modale section -->
+      </main>
+      <!-- main section -->
+    </div>
+
     <!-- footer -->
     <footer class="flex">
       <nav>
