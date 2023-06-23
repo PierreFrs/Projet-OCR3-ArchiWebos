@@ -130,6 +130,15 @@ const postItem = async (e) => {
       successMessage();
       updateGalleries();
       resetErrors();
+      picturePlaceholder.classList.add("flex");
+      picturePlaceholder.classList.remove("hidden");
+      const tempPicturePlaceholder = document.querySelector(
+        ".temp-picture-placeholder"
+      );
+      tempPicturePlaceholder.remove();
+      titleInput.value = "";
+      categoryInput.value = "";
+      toggleValidateBtn(validateBtn);
       return true;
     } else if (!authToken) {
       console.log("Please provide a valid authentication token");
@@ -155,5 +164,11 @@ const successMessage = () => {
   successMsg.classList.add("success-message");
   insertAfter(successMsg, validateBtn);
 };
+
+titleInput.addEventListener("input", toggleValidateBtn.bind(null, validateBtn));
+categoryInput.addEventListener(
+  "input",
+  toggleValidateBtn.bind(null, validateBtn)
+);
 
 validateBtn.addEventListener("click", postItem);

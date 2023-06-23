@@ -5,40 +5,45 @@ const modaleOverlay = document.querySelector(".modale-overlay");
 const modale = document.getElementById("modale");
 const returnArrow = document.querySelector(".left-arrow-container");
 const modaleContainer = document.querySelector(".modale-container");
+const titleInput = document.getElementById("titre");
+const categoryInput = document.getElementById("categorie");
 
 // ouvre et ferme la modale
-
 const openModale = () => {
   modale.classList.remove("hidden");
   modaleOverlay.classList.remove("hidden");
 };
 
 const closeModale = () => {
+  const validateBtn = document.querySelector(".valider");
   modale.classList.add("hidden");
   modaleOverlay.classList.add("hidden");
   resetModale();
+  toggleValidateBtn(validateBtn);
 };
 
+// Reset la modale
 const resetModale = () => {
-  const picturePlaceholder = document.querySelector(".picture-placeholder");
-  const titleInput = document.getElementById("titre");
-  const categoryInput = document.getElementById("categorie");
+  showPicturePlaceholder();
+  if (titleInput || categoryInput) {
+    titleInput.value = "";
+    categoryInput.value = "";
+  }
 
-  picturePlaceholder.classList.remove("hidden");
-  picturePlaceholder.classList.add("flex");
+  resetSuccessMsg();
+  if (mainModalePage.classList.contains("hidden")) {
+    toggleModalePage();
+  }
+};
 
-  titleInput.value = "";
-  categoryInput.value = "";
-
+const resetSuccessMsg = () => {
   const existingSuccessMsg = document.querySelector(".success-message");
   if (existingSuccessMsg) {
     existingSuccessMsg.remove();
   }
-  toggleModalePage();
 };
 
 // Crée le contenu du modaleContainer
-//  Main Modale Page
 const createMainModalePage = () => {
   const mainModalePage = document.createElement("div");
   mainModalePage.classList.add("main-modale-page");
@@ -55,7 +60,6 @@ const createMainModalePage = () => {
   displayModaleGalleryOnLoad(modaleGallery);
 };
 
-// Add Page
 const createAddPage = () => {
   const addPage = document.createElement("div");
   addPage.classList.add("modale-add-page", "hidden");
@@ -80,7 +84,7 @@ const createAddPage = () => {
           </select>
         </form>
         <hr />
-        <button type="submit" class="valider button grey-button" disabled>Valider</button>`;
+        <button type="submit" class="valider button" disabled>Valider</button>`;
 
   modaleContainer.appendChild(addPage);
 };
@@ -88,18 +92,39 @@ const createAddPage = () => {
 createMainModalePage();
 createAddPage();
 
-// Redirige vers la page d'ajout
-const toggleModalePage = () => {
-  const mainModalePage = document.querySelector(".main-modale-page");
-  const addPage = document.querySelector(".modale-add-page");
+// Redirige vers la page d'ajout (après fermeture et lorsque clic sur fleche retour)
+const mainModalePage = document.querySelector(".main-modale-page");
+const addPage = document.querySelector(".modale-add-page");
 
+const toggleModalePage = () => {
+  if (mainModalePage.classList.contains("hidden")) {
+    mainModalePage.classList.toggle("hidden");
+    addPage.classList.toggle("hidden");
+    returnArrow.classList.toggle("hidden");
+  }
+};
+
+// Redirige vers la page d'ajout (sur clic ajout photo)
+const toggleModalePageOnClick = () => {
   mainModalePage.classList.toggle("hidden");
   addPage.classList.toggle("hidden");
   returnArrow.classList.toggle("hidden");
 };
 
-// bouton menant sur la page d'ajout de projet
+// Fonctions gérant l'affichage ou non du placeholder de photo avant import
+const picturePlaceholder = document.querySelector(".picture-placeholder");
 
+const hidePicturePlaceholder = () => {
+  picturePlaceholder.classList.add("hidden");
+  picturePlaceholder.classList.remove("flex");
+};
+
+const showPicturePlaceholder = () => {
+  picturePlaceholder.classList.remove("hidden");
+  picturePlaceholder.classList.add("flex");
+};
+
+// bouton menant sur la page d'ajout de projet et gérant le retour à la page principale de la modale via la flèche de retour
 const goToAddBtn = modaleContainer.querySelector(".go-to-add-photo-btn");
 goToAddBtn.addEventListener("click", () => {
   const validateBtn = document.querySelector(".valider");
@@ -109,12 +134,17 @@ goToAddBtn.addEventListener("click", () => {
 
   if (tempPicturePlaceholder) {
     tempPicturePlaceholder.remove();
-    toggleValidateBtn(validateBtn);
   }
 
-  toggleModalePage();
+  toggleModalePageOnClick();
+  showPicturePlaceholder();
+  toggleValidateBtn(validateBtn);
 });
 
-returnArrow.addEventListener("click", toggleModalePage);
+returnArrow.addEventListener("click", () => {
+  toggleModalePageOnClick();
+  hidePicturePlaceholder();
+  resetSuccessMsg();
+});
 
 export { openModale, closeModale };

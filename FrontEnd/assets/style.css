@@ -315,7 +315,6 @@ input[type="submit"] {
 /* login page */
 #login-body {
   height: 100vh;
-
   justify-content: center;
   align-items: center;
   position: relative;
