@@ -9,6 +9,7 @@ const adminMode = () => {
 
   const filtersContainer = document.querySelector(".filters-container");
   filtersContainer.classList.add("hidden");
+  filtersContainer.classList.remove("flex");
 
   gallery.classList.add("gallery-margin");
 
