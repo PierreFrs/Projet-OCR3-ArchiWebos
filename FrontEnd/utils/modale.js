@@ -1,5 +1,9 @@
 import { displayModaleGalleryOnLoad } from "./displayModaleGallery.js";
 import toggleValidateBtn from "./toggleValidateBtn.js";
+import {
+  showPicturePlaceholder,
+  hidePicturePlaceholder,
+} from "./showAndHidePicturePlaceholder.js";
 
 const modaleOverlay = document.querySelector(".modale-overlay");
 const modale = document.getElementById("modale");
@@ -24,7 +28,7 @@ const closeModale = () => {
 
 // Reset la modale
 const resetModale = () => {
-  showPicturePlaceholder();
+  showPicturePlaceholder(picturePlaceholder);
   if (titleInput || categoryInput) {
     titleInput.value = "";
     categoryInput.value = "";
@@ -91,6 +95,7 @@ const createAddPage = () => {
 
 createMainModalePage();
 createAddPage();
+const picturePlaceholder = document.querySelector(".picture-placeholder");
 
 // Redirige vers la page d'ajout (après fermeture et lorsque clic sur fleche retour)
 const mainModalePage = document.querySelector(".main-modale-page");
@@ -111,19 +116,6 @@ const toggleModalePageOnClick = () => {
   returnArrow.classList.toggle("hidden");
 };
 
-// Fonctions gérant l'affichage ou non du placeholder de photo avant import
-const picturePlaceholder = document.querySelector(".picture-placeholder");
-
-const hidePicturePlaceholder = () => {
-  picturePlaceholder.classList.add("hidden");
-  picturePlaceholder.classList.remove("flex");
-};
-
-const showPicturePlaceholder = () => {
-  picturePlaceholder.classList.remove("hidden");
-  picturePlaceholder.classList.add("flex");
-};
-
 // bouton menant sur la page d'ajout de projet et gérant le retour à la page principale de la modale via la flèche de retour
 const goToAddBtn = modaleContainer.querySelector(".go-to-add-photo-btn");
 goToAddBtn.addEventListener("click", () => {
@@ -137,13 +129,13 @@ goToAddBtn.addEventListener("click", () => {
   }
 
   toggleModalePageOnClick();
-  showPicturePlaceholder();
+  showPicturePlaceholder(picturePlaceholder);
   toggleValidateBtn(validateBtn);
 });
 
 returnArrow.addEventListener("click", () => {
   toggleModalePageOnClick();
-  hidePicturePlaceholder();
+  hidePicturePlaceholder(picturePlaceholder);
   resetSuccessMsg();
 });
 

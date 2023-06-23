@@ -29,17 +29,13 @@ const deleteItem = async (itemId, authToken) => {
     if (response.ok) {
       console.log("Deletion successful");
       updateGalleries();
-      return true;
     } else if (!authToken) {
       console.log("Please provide a valid authentification token");
-      return false;
     } else {
       console.log("Deletion failed");
-      return false;
     }
   } catch (error) {
     console.error("Error deleting item", error);
-    return false;
   }
 };
 

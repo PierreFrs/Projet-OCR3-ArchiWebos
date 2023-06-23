@@ -2,6 +2,7 @@ import insertAfter from "./insertAfter.js";
 import updateGalleries from "./updateGalleries.js";
 import resetErrors from "./resetErrors.js";
 import toggleValidateBtn from "./toggleValidateBtn.js";
+import { showPicturePlaceholder } from "./showAndHidePicturePlaceholder.js";
 
 const addPhotoBtn = document.querySelector(".add-photo-btn");
 const addPhotoInput = document.getElementById("addPhotoInput");
@@ -130,8 +131,7 @@ const postItem = async (e) => {
       successMessage();
       updateGalleries();
       resetErrors();
-      picturePlaceholder.classList.add("flex");
-      picturePlaceholder.classList.remove("hidden");
+      showPicturePlaceholder(picturePlaceholder);
       const tempPicturePlaceholder = document.querySelector(
         ".temp-picture-placeholder"
       );
@@ -139,17 +139,13 @@ const postItem = async (e) => {
       titleInput.value = "";
       categoryInput.value = "";
       toggleValidateBtn(validateBtn);
-      return true;
     } else if (!authToken) {
       console.log("Please provide a valid authentication token");
-      return false;
     } else {
       console.log("post failed");
-      return false;
     }
   } catch (error) {
     console.error("Error posting item", error);
-    return false;
   }
 };
 
