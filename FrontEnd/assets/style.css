@@ -61,6 +61,7 @@ body {
   font-size: 14px;
   background-color: #fffef8;
   position: relative;
+  overflow-x: hidden;
 }
 
 .main-body-container {
